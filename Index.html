@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Designer Gráfico em Lisboa | Erick Anderson</title>
+    <meta name="description" content="Identidade visual, artes para redes sociais e materiais digitais com foco em credibilidade, posicionamento e conversão. Designer Gráfico em Lisboa.">
+    
+    <!-- Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Designer Gráfico em Lisboa | Erick Anderson">
+    <meta property="og:description" content="Identidade visual, artes para redes sociais e materiais digitais com foco em credibilidade, posicionamento e conversão.">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://i.ibb.co/FkR0qb75/logo-erick-designer.png" type="image/png">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        html { scroll-behavior: smooth; cursor: none; }
+        body {
+            background-color: #020305;
+            color: #d5dbe6;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* --- LANG TOGGLE --- */
+        #lang-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            background: rgba(182, 249, 56, 0.1);
+            border: 1px solid rgba(182, 249, 56, 0.3);
+            color: #b6f938;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        #lang-toggle:hover {
+            background: #b6f938;
+            color: #020305;
+        }
+
+        /* --- CURSOR CUSTOMIZADO --- */
+        .cursor-dot,
+        .cursor-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+        }
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #b6f938;
+            box-shadow: 0 0 10px #b6f938;
+        }
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(182, 249, 56, 0.5);
+            transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s;
+        }
+        body.hovering .cursor-outline {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(182, 249, 56, 0.1);
+            border-color: transparent;
+        }
+        @media (max-width: 768px) {
+            html { cursor: auto; }
+            .cursor-dot, .cursor-outline { display: none; }
+            #lang-toggle { top: 15px; right: 15px; padding: 6px 12px; font-size: 12px; }
+        }
+
+        .font-serif { font-family: 'Instrument Serif', serif; }
+        .font-manrope { font-family: 'Manrope', sans-serif; }
+        
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .heading-gradient { background-image: linear-gradient(138deg, #d5dbe6 50%, #04070d 160%); }
+        
+        .bg-radial-glow { 
+            background: radial-gradient(50% 50% at 50% 50%, rgba(182, 249, 56, 0.15) 0%, rgba(4, 7, 13, 0) 100%); 
+        }
+
+        .btn-primary {
+            background-color: #b6f938;
+            color: #04070d;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(182, 249, 56, 0.3);
+        }
+        .btn-primary:hover {
+            background-color: #a3e635;
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(182, 249, 56, 0.5);
+        }
+
+        .btn-outline {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.03);
+            transition: all 0.3s ease;
+        }
+        .btn-outline:hover {
+            border-color: #b6f938;
+            color: #b6f938;
+            background: rgba(182, 249, 56, 0.05);
+        }
+
+        .card-border {
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            background: rgba(8, 10, 15, 0.7);
+            backdrop-filter: blur(12px);
+            box-shadow: inset 0 2px 1px rgba(255, 255, 255, 0.02);
+        }
+        
+        .tilt-card {
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+        }
+
+        .card-content {
+            transform: translateZ(20px);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(182, 249, 56, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(182, 249, 56, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(182, 249, 56, 0); }
+        }
+        .btn-pulse { animation: pulse 2s infinite; }
+
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animate-blob {
+            animation: blob 10s infinite alternate;
+        }
+        .animation-delay-2000 { animation-delay: 2s; }
+        .animation-delay-4000 { animation-delay: 4s; }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        .delay-100 { animation-delay: 1s; }
+        .delay-200 { animation-delay: 2s; }
+        .delay-300 { animation-delay: 3s; }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* Ajuste de Inputs para garantir funcionamento */
+        input, textarea, select {
+            background: rgba(2, 3, 5, 0.9); /* Mais opaco para garantir clique */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: border-color 0.3s;
+            cursor: text; /* Força cursor de texto */
+            position: relative; /* Garante z-index */
+            z-index: 20;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #b6f938;
+            box-shadow: 0 0 0 1px #b6f938;
+        }
+        
+        #portfolioModal { transition: opacity 0.3s ease; }
+        #portfolioModal.hidden { opacity: 0; pointer-events: none; }
+        #portfolioModal:not(.hidden) { opacity: 1; pointer-events: auto; }
+
+        #notification-toast {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            z-index: 50;
+            transform: translateX(-150%);
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            max-width: 90vw;
+            width: 340px;
+        }
+        #notification-toast.show {
+            transform: translateX(0);
+        }
+        @media (max-width: 640px) {
+            #notification-toast {
+                bottom: 10px;
+                left: 10px;
+                right: 10px;
+                width: auto;
+            }
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden relative">
+
+    <!-- LANGUAGE TOGGLE -->
+    <button id="lang-toggle" onclick="toggleLanguage()">
+        <span class="text-xl">🇺🇸</span> EN
+    </button>
+
+    <!-- ELEMENTOS DO CURSOR -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- BACKGROUND ANIMADO GLOBAL -->
+    <div class="fixed inset-0 -z-50 overflow-hidden pointer-events-none">
+        <div class="absolute inset-0 bg-[#020305]"></div>
+        <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#b6f938] rounded-full mix-blend-screen filter blur-[120px] opacity-5 animate-blob"></div>
+        <div class="absolute top-0 right-1/4 w-[400px] h-[400px] bg-purple-900 rounded-full mix-blend-screen filter blur-[120px] opacity-5 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-32 left-1/3 w-[600px] h-[600px] bg-[#b6f938] rounded-full mix-blend-screen filter blur-[150px] opacity-5 animate-blob animation-delay-4000"></div>
+        <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.05%22/%3E%3C/svg%3E');"></div>
+    </div>
+
+    <!-- Notificação de Prova Social -->
+    <div id="notification-toast" class="card-border rounded-xl p-4 flex items-center gap-4 shadow-2xl backdrop-blur-xl border-l-4 border-l-[#b6f938]">
+        <div class="bg-[#b6f938]/10 p-2 rounded-full text-[#b6f938]">
+            <i data-lucide="check-circle" class="w-5 h-5"></i>
+        </div>
+        <div>
+            <p id="notif-name" class="text-white font-bold text-sm">Tiago Silva</p>
+            <p id="notif-action" class="text-gray-400 text-xs mt-0.5">acabou de adquirir uma Landing Page</p>
+            <p class="text-[10px] text-gray-500 mt-1 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-green-500 inline-block animate-pulse"></span> <span data-i18n="now">Agora mesmo</span></p>
+        </div>
+        <button onclick="document.getElementById('notification-toast').classList.remove('show')" class="absolute top-2 right-2 text-gray-500 hover:text-white interactive-hover">
+            <i data-lucide="x" class="w-3 h-3"></i>
+        </button>
+    </div>
+
+    <!-- Top Banner -->
+    <div class="bg-[#b6f938] text-[#04070d] py-2 px-6 flex items-center justify-center text-center text-xs md:text-sm font-bold relative z-10 interactive-hover">
+        <p data-i18n="top_banner">Disponível para novos projetos em Lisboa e Região</p>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[90vh] flex items-center justify-center pt-32 pb-20 px-6 overflow-hidden z-10">
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <div class="reveal">
+                <span class="inline-flex items-center gap-3 pl-2 pr-6 py-2 rounded-full border border-white/10 bg-[#b6f938]/10 text-base text-[#b6f938] font-medium mb-6 tracking-wide backdrop-blur-md animate-float">
+                    <img src="https://d2tfco5ldvlr4r.cloudfront.net/profile/210x210/erickanderson.png?m=1644328770120" alt="Erick Anderson" class="w-12 h-12 rounded-full object-cover border-2 border-[#b6f938]/30">
+                    <span data-i18n="hero_badge">Erick Anderson - Designer Estratégico</span>
+                </span>
+                <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6 leading-[1.1]" data-i18n="hero_title">
+                    Designer Gráfico em <span class="font-serif italic font-normal text-gradient heading-gradient inline-block hover:scale-110 transition-transform duration-300 cursor-default">Lisboa</span> para negócios que querem vender mais
+                </h1>
+                <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-8 font-manrope leading-relaxed" data-i18n="hero_desc">
+                    Identidade visual, sites, artes para redes sociais e materiais digitais com foco em credibilidade, posicionamento e conversão.
+                </p>
+                <p class="text-sm text-gray-500 mb-10" data-i18n="hero_budget_text">Orçamento rápido e atendimento direto via WhatsApp.</p>
+                
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#form-orcamento" class="btn-primary px-8 py-4 rounded-full font-bold text-lg w-full sm:w-auto btn-pulse interactive-hover" data-i18n="btn_budget">
+                        Pedir orçamento
+                    </a>
+                    <a href="https://wa.me/5533987005458" target="_blank" class="btn-outline px-8 py-4 rounded-full font-medium text-lg flex items-center justify-center gap-2 w-full sm:w-auto backdrop-blur-sm interactive-hover">
+                        <i data-lucide="message-circle" class="w-5 h-5"></i>
+                        <span data-i18n="btn_contact">Contactar via WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Value Props Grid -->
+            <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 text-left reveal border-t border-white/5 pt-10">
+                <div class="flex flex-col gap-2 p-4 rounded-xl hover:bg-white/5 transition-colors animate-float">
+                    <i data-lucide="zap" class="w-6 h-6 text-[#b6f938] mb-1"></i>
+                    <span class="text-sm text-gray-400 font-medium" data-i18n="prop_1">Entrega rápida e organizada</span>
+                </div>
+                <div class="flex flex-col gap-2 p-4 rounded-xl hover:bg-white/5 transition-colors animate-float delay-100">
+                    <i data-lucide="pen-tool" class="w-6 h-6 text-[#b6f938] mb-1"></i>
+                    <span class="text-sm text-gray-400 font-medium" data-i18n="prop_2">Design profissional</span>
+                </div>
+                <div class="flex flex-col gap-2 p-4 rounded-xl hover:bg-white/5 transition-colors animate-float delay-200">
+                    <i data-lucide="target" class="w-6 h-6 text-[#b6f938] mb-1"></i>
+                    <span class="text-sm text-gray-400 font-medium" data-i18n="prop_3">Estratégia visual alinhada</span>
+                </div>
+                <div class="flex flex-col gap-2 p-4 rounded-xl hover:bg-white/5 transition-colors animate-float delay-300">
+                    <i data-lucide="layout" class="w-6 h-6 text-[#b6f938] mb-1"></i>
+                    <span class="text-sm text-gray-400 font-medium" data-i18n="prop_4">Artes para conversão</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section class="py-20 px-6 bg-transparent relative z-10">
+        <div class="max-w-6xl mx-auto">
+            <div class="mb-12 reveal text-center md:text-left">
+                <h2 class="text-3xl md:text-5xl font-medium text-white mb-4" data-i18n="services_title">Como posso ajudar</h2>
+                <p class="text-gray-400 font-manrope text-lg" data-i18n="services_desc">Soluções visuais completas para elevar o nível da sua marca.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Card 1 -->
+                <div class="card-border p-8 rounded-2xl reveal group tilt-card interactive-hover">
+                    <div class="card-content">
+                        <div class="w-14 h-14 bg-[#b6f938]/10 rounded-full border border-[#b6f938]/20 flex items-center justify-center mb-6 text-[#b6f938]">
+                            <i data-lucide="palette" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3" data-i18n="service_1_title">Identidade Visual</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed" data-i18n="service_1_desc">
+                            Criação ou reformulação de logótipo, definição de cores, tipografia e padrões visuais para fortalecer a imagem da sua marca.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="card-border p-8 rounded-2xl reveal group tilt-card interactive-hover" style="transition-delay: 100ms;">
+                    <div class="card-content">
+                        <div class="w-14 h-14 bg-[#b6f938]/10 rounded-full border border-[#b6f938]/20 flex items-center justify-center mb-6 text-[#b6f938]">
+                            <i data-lucide="globe" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3" data-i18n="service_2_title">Sites e Landing Pages</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed" data-i18n="service_2_desc">
+                            Desenvolvimento de sites institucionais e páginas de aterragem (landing pages) otimizadas para conversão e velocidade.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card-border p-8 rounded-2xl reveal group tilt-card interactive-hover" style="transition-delay: 200ms;">
+                    <div class="card-content">
+                        <div class="w-14 h-14 bg-[#b6f938]/10 rounded-full border border-[#b6f938]/20 flex items-center justify-center mb-6 text-[#b6f938]">
+                            <i data-lucide="instagram" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3" data-i18n="service_3_title">Artes para Redes Sociais</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed" data-i18n="service_3_desc">
+                            Criação de artes para feed, stories e capas, com padrão visual consistente para atrair atenção e gerar confiança.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="card-border p-8 rounded-2xl reveal group tilt-card interactive-hover" style="transition-delay: 300ms;">
+                    <div class="card-content">
+                        <div class="w-14 h-14 bg-[#b6f938]/10 rounded-full border border-[#b6f938]/20 flex items-center justify-center mb-6 text-[#b6f938]">
+                            <i data-lucide="monitor-smartphone" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3" data-i18n="service_4_title">Materiais Digitais</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed" data-i18n="service_4_desc">
+                            Desenvolvimento de banners, flyers digitais, criativos para anúncios, apresentações e outros materiais essenciais.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bloco Lista & Diferencial -->
+    <section class="py-24 px-6 relative overflow-hidden z-10">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm -z-10"></div>
+
+        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start relative z-10">
+            
+            <!-- Lista -->
+            <div class="reveal sticky top-10">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-white leading-tight" data-i18n="diff_title">Trabalho com empresas e profissionais que precisam de uma <span class="text-[#b6f938]">imagem forte</span> no mercado local.</h2>
+                <ul class="space-y-6">
+                    <li class="flex items-start gap-4 text-gray-300">
+                        <div class="min-w-[24px] pt-1"><i data-lucide="check-circle-2" class="text-[#b6f938] w-6 h-6"></i></div>
+                        <span class="text-lg" data-i18n="list_1">Rebranding e criação de logótipo</span>
+                    </li>
+                    <li class="flex items-start gap-4 text-gray-300">
+                        <div class="min-w-[24px] pt-1"><i data-lucide="check-circle-2" class="text-[#b6f938] w-6 h-6"></i></div>
+                        <span class="text-lg" data-i18n="list_2">Criação de Sites e Landing Pages modernas</span>
+                    </li>
+                    <li class="flex items-start gap-4 text-gray-300">
+                        <div class="min-w-[24px] pt-1"><i data-lucide="check-circle-2" class="text-[#b6f938] w-6 h-6"></i></div>
+                        <span class="text-lg" data-i18n="list_3">Pacotes mensais de conteúdo para redes sociais</span>
+                    </li>
+                    <li class="flex items-start gap-4 text-gray-300">
+                        <div class="min-w-[24px] pt-1"><i data-lucide="check-circle-2" class="text-[#b6f938] w-6 h-6"></i></div>
+                        <span class="text-lg" data-i18n="list_4">Criativos de alta performance para tráfego pago</span>
+                    </li>
+                </ul>
+                <div class="mt-10">
+                    <a href="#form-orcamento" class="btn-primary px-8 py-4 rounded-full font-bold inline-flex items-center gap-2 interactive-hover" data-i18n="btn_budget">
+                        Pedir orçamento
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Coluna Direita: FOTO + DIFERENCIAL -->
+            <div class="flex flex-col gap-6 reveal delay-100">
+                <div class="relative w-full aspect-[4/5] sm:aspect-square md:aspect-video lg:aspect-[4/3] rounded-3xl overflow-hidden border border-white/10 group cursor-pointer shadow-2xl interactive-hover">
+                    <a href="https://ibb.co/RkGhzFx7" target="_blank">
+                        <img src="https://i.ibb.co/ksV3Q7RM/Chat-GPT-Image-11-de-jan-de-2026-14-33-07.png" 
+                             alt="Erick Anderson - Designer Gráfico" 
+                             border="0"
+                             class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out transform group-hover:scale-105">
+                    </a>
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#020305] via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity pointer-events-none"></div>
+                    <div class="absolute bottom-6 left-6 z-10 pointer-events-none">
+                        <p class="text-white font-bold text-xl md:text-2xl">Erick Anderson</p>
+                        <div class="flex items-center gap-2 mt-1">
+                            <div class="w-2 h-2 rounded-full bg-[#b6f938]"></div>
+                            <p class="text-[#b6f938] font-medium text-sm tracking-wide uppercase" data-i18n="hero_badge_short">Designer Estratégico</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-border p-8 md:p-10 rounded-3xl relative overflow-hidden tilt-card interactive-hover">
+                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-[#b6f938]/5 rounded-full blur-3xl"></div>
+                    <div class="card-content">
+                        <h3 class="text-2xl font-serif italic text-white mb-6" data-i18n="diff_subtitle">Aqui, o design não é apenas estético.</h3>
+                        <p class="text-gray-400 mb-6 font-manrope" data-i18n="diff_desc">Cada projeto é pensado estrategicamente para:</p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="bg-[#020305]/50 p-4 rounded-xl border border-white/5">
+                                <h4 class="text-white font-bold mb-1" data-i18n="val_1_t">Confiança</h4>
+                                <p class="text-xs text-gray-500" data-i18n="val_1_d">Gerar confiança imediata.</p>
+                            </div>
+                            <div class="bg-[#020305]/50 p-4 rounded-xl border border-white/5">
+                                <h4 class="text-white font-bold mb-1" data-i18n="val_2_t">Posicionamento</h4>
+                                <p class="text-xs text-gray-500" data-i18n="val_2_d">Posicionar a sua marca.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfólio (Embed do Site) -->
+    <section class="py-20 px-0 bg-transparent relative z-10 w-full">
+        <div class="max-w-6xl mx-auto text-center reveal px-6">
+            <h2 class="text-3xl md:text-5xl font-medium text-white mb-4" data-i18n="portfolio_title">Portfólio Selecionado</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto mb-12 font-manrope" data-i18n="portfolio_desc">Veja alguns trabalhos realizados em identidade visual, redes sociais e materiais digitais.</p>
+        </div>
+            
+        <div class="w-full h-[800px] overflow-hidden relative group interactive-hover" onclick="openPortfolio()">
+            <iframe 
+                src="https://www.erickanderson.com.br/portfolio" 
+                class="w-full h-[calc(100%+160px)] border-0 -mt-[160px] pointer-events-none" 
+                title="Portfólio Erick Anderson" 
+                loading="lazy"
+                scrolling="no">
+            </iframe>
+            
+            <div class="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-[#020305] to-transparent pointer-events-none"></div>
+
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20">
+                 <button class="bg-[#020305]/80 backdrop-blur border border-[#b6f938] text-[#b6f938] px-8 py-3 rounded-full font-bold flex items-center gap-2 hover:bg-[#b6f938] hover:text-[#04070d] transition-all duration-300 shadow-[0_0_20px_rgba(182,249,56,0.2)]">
+                    <span data-i18n="btn_portfolio">Ver Portfólio Completo</span>
+                    <i data-lucide="maximize-2" class="w-4 h-4"></i>
+                </button>
+            </div>
+            
+            <div class="absolute inset-0 cursor-pointer z-10"></div>
+        </div>
+    </section>
+
+    <!-- Modal/Popup do Portfólio -->
+    <div id="portfolioModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 sm:p-6">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-sm" onclick="closePortfolio()"></div>
+        
+        <div class="relative w-full h-full max-w-7xl bg-[#0c1019] rounded-2xl border border-white/10 shadow-2xl overflow-hidden flex flex-col animate-in fade-in zoom-in duration-300">
+            <div class="flex justify-between items-center p-4 border-b border-white/10 bg-[#04070d]">
+                <div class="flex items-center gap-2">
+                    <span class="text-white font-bold text-sm sm:text-base">Portfólio - Erick Anderson</span>
+                    <a href="https://www.erickanderson.com.br/portfolio" target="_blank" class="text-xs text-gray-500 hover:text-[#b6f938] transition-colors ml-2 flex items-center gap-1">
+                        (<span data-i18n="open_new_tab">Abrir em nova aba</span> <i data-lucide="external-link" class="w-3 h-3"></i>)
+                    </a>
+                </div>
+                <button onclick="closePortfolio()" class="text-gray-400 hover:text-white transition-colors p-1 rounded-full hover:bg-white/10 interactive-hover">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            
+            <div class="flex-1 w-full h-full bg-white relative">
+                <iframe src="https://www.erickanderson.com.br/portfolio" class="w-full h-full border-0" title="Portfólio Erick Anderson"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- NOVA SECÇÃO: Landing Pages -->
+    <section class="py-24 px-6 relative z-10">
+        <div class="max-w-4xl mx-auto">
+            <div class="card-border p-10 md:p-14 rounded-3xl text-center relative overflow-hidden group">
+                <div class="absolute inset-0 bg-[#b6f938] opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none"></div>
+                <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-[#b6f938]/10 rounded-full blur-[80px] pointer-events-none"></div>
+
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 relative z-10" data-i18n="lp_title">
+                    Quer uma Landing Page igual a esta?
+                </h2>
+                <p class="text-xl text-gray-400 mb-8 font-manrope relative z-10" data-i18n="lp_desc">
+                    Eu faço para si! Design estratégico e alta conversão para o seu negócio.
+                </p>
+                <a href="https://wa.me/5533987005458" target="_blank" class="btn-primary px-10 py-5 rounded-full font-bold text-lg inline-flex items-center gap-2 interactive-hover hover:scale-105 transition-transform relative z-10">
+                    <span data-i18n="btn_lp">Quero uma landing page como essa</span>
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulário & Conversão -->
+    <section id="form-orcamento" class="py-24 px-6 relative z-10">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-md -z-10"></div>
+        
+        <div class="max-w-xl mx-auto relative z-10 reveal">
+            <div class="card-border p-8 md:p-10 rounded-3xl shadow-2xl">
+                <div class="card-content">
+                    <h2 class="text-3xl font-bold text-center mb-2 text-white" data-i18n="form_title">Orçamento rápido</h2>
+                    <p class="text-center text-gray-400 mb-8 text-sm" data-i18n="form_subtitle">Preencha os dados abaixo para receber um orçamento ajustado.</p>
+                    
+                    <form name="contact" method="POST" action="/obrigado.html" data-netlify="true" class="space-y-5">
+                        <input type="hidden" name="form-name" value="contact">
+
+                        <div class="relative z-20">
+                            <label class="block text-xs font-bold text-gray-400 mb-1 ml-1 uppercase tracking-wider" data-i18n="label_name">Nome</label>
+                            <input type="text" name="nome" class="w-full p-4 rounded-xl interactive-hover" placeholder="O seu nome ou da empresa" required data-i18n-placeholder="ph_name">
+                        </div>
+
+                        <div class="relative z-20">
+                            <label class="block text-xs font-bold text-gray-400 mb-1 ml-1 uppercase tracking-wider">Email</label>
+                            <input type="email" name="email" class="w-full p-4 rounded-xl interactive-hover" placeholder="o-seu@email.com" required data-i18n-placeholder="ph_email">
+                        </div>
+
+                        <div class="relative z-20">
+                            <label class="block text-xs font-bold text-gray-400 mb-1 ml-1 uppercase tracking-wider">WhatsApp</label>
+                            <input type="tel" name="whatsapp" class="w-full p-4 rounded-xl interactive-hover" placeholder="O seu WhatsApp" required data-i18n-placeholder="ph_whatsapp">
+                        </div>
+                        
+                        <div class="relative z-20">
+                            <label class="block text-xs font-bold text-gray-400 mb-1 ml-1 uppercase tracking-wider" data-i18n="label_type">Tipo de negócio</label>
+                            <input type="text" name="negocio" class="w-full p-4 rounded-xl interactive-hover" placeholder="Ex: Restaurante, Clínica, Imobiliária..." required data-i18n-placeholder="ph_type">
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 relative z-20">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-400 mb-1 ml-1 uppercase tracking-wider" data-i18n="label_service">Serviço</label>
+                                <select name="servico" class="w-full p-4 rounded-xl text-gray-300 interactive-hover" required id="service-select">
+                                    <option value="" disabled selected data-i18n="opt_select">Selecione...</option>
+                                    <option data-i18n="opt_1">Identidade Visual</option>
+                                    <option data-i18n="opt_2">Site Institucional</option>
+                                    <option data-i18n="opt_3">Landing Page</option>
+                                    <option data-i18n="opt_4">Redes Sociais</option>
+                                    <option data-i18n="opt_5">Materiais Digitais</option>
+                                    <option data-i18n="opt_6">Pack de Imagens</option>
+                                    <option data-i18n="opt_7">Outros</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-400 mb-1 ml-1 uppercase tracking-wider" data-i18n="label_deadline">Prazo</label>
+                                <input type="text" name="prazo" class="w-full p-4 rounded-xl interactive-hover" placeholder="Ex: Urgente, 1 mês..." required data-i18n-placeholder="ph_deadline">
+                            </div>
+                        </div>
+
+                        <div class="relative z-20">
+                            <label class="block text-xs font-bold text-gray-400 mb-1 ml-1 uppercase tracking-wider" data-i18n="label_msg">Mensagem</label>
+                            <textarea name="mensagem" rows="4" class="w-full p-4 rounded-xl interactive-hover" placeholder="Descreva o seu objetivo, referências ou links..." required data-i18n-placeholder="ph_msg"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full btn-primary py-4 rounded-xl font-bold text-lg mt-2 shadow-lg interactive-hover relative z-20" data-i18n="btn_send">
+                            Enviar pedido de orçamento
+                        </button>
+                    </form>
+
+                    <div class="mt-10 pt-6 border-t border-white/10 text-center relative z-20">
+                        <p class="text-sm text-gray-400 mb-4" data-i18n="form_footer_text">Prefere algo mais rápido?</p>
+                        <a href="https://wa.me/5533987005458" target="_blank" class="inline-flex items-center gap-2 text-white hover:text-[#b6f938] font-bold transition-colors interactive-hover">
+                            <i data-lucide="message-circle" class="w-5 h-5 text-green-500"></i>
+                            <span data-i18n="btn_contact">Falar diretamente no WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 px-6 text-center border-t border-white/5 bg-black/90 backdrop-blur-md relative z-10">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="text-left w-32 md:w-40">
+                <a href="#" class="interactive-hover block">
+                    <img src="https://i.ibb.co/FkR0qb75/logo-erick-designer.png" alt="logo-erick-designer" border="0" class="w-full h-auto">
+                </a>
+            </div>
+            
+            <div class="text-sm text-gray-600" data-i18n="footer_copy">
+                &copy; 2026 Todos os direitos reservados.
+            </div>
+
+            <div class="flex gap-6">
+                <!-- Instagram atualizado -->
+                <a href="https://www.instagram.com/oerickanderson/" target="_blank" class="text-gray-500 hover:text-[#b6f938] transition-colors interactive-hover"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                <a href="mailto:erick@erickanderson.com.br" class="text-gray-500 hover:text-[#b6f938] transition-colors interactive-hover"><i data-lucide="mail" class="w-5 h-5"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        revealElements.forEach(el => observer.observe(el));
+
+        // Modal Logic
+        function openPortfolio() {
+            const modal = document.getElementById('portfolioModal');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; 
+            lucide.createIcons();
+        }
+        function closePortfolio() {
+            const modal = document.getElementById('portfolioModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = ''; 
+        }
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") closePortfolio();
+        });
+
+        // Cursor Logic
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+            cursorOutline.style.left = `${posX}px`;
+            cursorOutline.style.top = `${posY}px`;
+        });
+        const interactiveElements = document.querySelectorAll('a, button, .interactive-hover, input, textarea, select, #lang-toggle');
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+            el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+        });
+
+        // Tilt Logic
+        document.querySelectorAll('.tilt-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * -10; 
+                const rotateY = ((x - centerX) / centerX) * 10;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            });
+        });
+
+        // --- TRANSLATION LOGIC ---
+        const translations = {
+            pt: {
+                top_banner: "Disponível para novos projetos em Lisboa e Região",
+                hero_badge: "Erick Anderson - Designer Estratégico",
+                hero_title: 'Designer Gráfico em <span class="font-serif italic font-normal text-gradient heading-gradient inline-block hover:scale-110 transition-transform duration-300 cursor-default">Lisboa</span> para negócios que querem vender mais',
+                hero_desc: "Identidade visual, sites, artes para redes sociais e materiais digitais com foco em credibilidade, posicionamento e conversão.",
+                hero_budget_text: "Orçamento rápido e atendimento direto via WhatsApp.",
+                btn_budget: "Pedir orçamento",
+                btn_contact: "Contactar via WhatsApp",
+                prop_1: "Entrega rápida e organizada",
+                prop_2: "Design profissional",
+                prop_3: "Estratégia visual alinhada",
+                prop_4: "Artes para conversão",
+                services_title: "Como posso ajudar",
+                services_desc: "Soluções visuais completas para elevar o nível da sua marca.",
+                service_1_title: "Identidade Visual",
+                service_1_desc: "Criação ou reformulação de logótipo, definição de cores, tipografia e padrões visuais para fortalecer a imagem da sua marca.",
+                service_2_title: "Sites e Landing Pages",
+                service_2_desc: "Desenvolvimento de sites institucionais e páginas de aterragem (landing pages) otimizadas para conversão e velocidade.",
+                service_3_title: "Artes para Redes Sociais",
+                service_3_desc: "Criação de artes para feed, stories e capas, com padrão visual consistente para atrair atenção e gerar confiança.",
+                service_4_title: "Materiais Digitais",
+                service_4_desc: "Desenvolvimento de banners, flyers digitais, criativos para anúncios, apresentações e outros materiais essenciais.",
+                diff_title: 'Trabalho com empresas e profissionais que precisam de uma <span class="text-[#b6f938]">imagem forte</span> no mercado local.',
+                list_1: "Rebranding e criação de logótipo",
+                list_2: "Criação de Sites e Landing Pages modernas",
+                list_3: "Pacotes mensais de conteúdo para redes sociais",
+                list_4: "Criativos de alta performance para tráfego pago",
+                hero_badge_short: "Designer Estratégico",
+                diff_subtitle: "Aqui, o design não é apenas estético.",
+                diff_desc: "Cada projeto é pensado estrategicamente para:",
+                val_1_t: "Confiança",
+                val_1_d: "Gerar confiança imediata.",
+                val_2_t: "Posicionamento",
+                val_2_d: "Posicionar a sua marca.",
+                portfolio_title: "Portfólio Selecionado",
+                portfolio_desc: "Veja alguns trabalhos realizados em identidade visual, redes sociais e materiais digitais.",
+                btn_portfolio: "Ver Portfólio Completo",
+                open_new_tab: "Abrir em nova aba",
+                lp_title: "Quer uma Landing Page igual a esta?",
+                lp_desc: "Eu faço para si! Design estratégico e alta conversão para o seu negócio.",
+                btn_lp: "Quero uma landing page como essa",
+                form_title: "Orçamento rápido",
+                form_subtitle: "Preencha os dados abaixo para receber um orçamento ajustado.",
+                label_name: "Nome",
+                ph_name: "O seu nome ou da empresa",
+                ph_email: "o-seu@email.com",
+                ph_whatsapp: "O seu WhatsApp",
+                label_type: "Tipo de negócio",
+                ph_type: "Ex: Restaurante, Clínica, Imobiliária...",
+                label_service: "Serviço",
+                opt_select: "Selecione...",
+                opt_1: "Identidade Visual",
+                opt_2: "Site Institucional",
+                opt_3: "Landing Page",
+                opt_4: "Redes Sociais",
+                opt_5: "Materiais Digitais",
+                opt_6: "Pack de Imagens",
+                opt_7: "Outros",
+                label_deadline: "Prazo",
+                ph_deadline: "Ex: Urgente, 1 mês...",
+                label_msg: "Mensagem",
+                ph_msg: "Descreva o seu objetivo, referências ou links...",
+                btn_send: "Enviar pedido de orçamento",
+                form_footer_text: "Prefere algo mais rápido?",
+                footer_copy: "&copy; 2026 Todos os direitos reservados.",
+                now: "Agora mesmo"
+            },
+            en: {
+                top_banner: "Available for new projects in Lisbon and Region",
+                hero_badge: "Erick Anderson - Strategic Designer",
+                hero_title: 'Graphic Designer in <span class="font-serif italic font-normal text-gradient heading-gradient inline-block hover:scale-110 transition-transform duration-300 cursor-default">Lisbon</span> for businesses that want to sell more',
+                hero_desc: "Visual identity, websites, social media arts and digital materials focused on credibility, positioning and conversion.",
+                hero_budget_text: "Quick quote and direct service via WhatsApp.",
+                btn_budget: "Request a Quote",
+                btn_contact: "Contact via WhatsApp",
+                prop_1: "Fast and organized delivery",
+                prop_2: "Professional Design",
+                prop_3: "Aligned visual strategy",
+                prop_4: "Arts for conversion",
+                services_title: "How I can help",
+                services_desc: "Complete visual solutions to elevate your brand level.",
+                service_1_title: "Visual Identity",
+                service_1_desc: "Creation or rebranding of logos, definition of colors, typography and visual patterns to strengthen your brand image.",
+                service_2_title: "Websites and Landing Pages",
+                service_2_desc: "Development of institutional websites and landing pages optimized for conversion and speed.",
+                service_3_title: "Social Media Arts",
+                service_3_desc: "Creation of arts for feed, stories and covers, with consistent visual pattern to attract attention and generate trust.",
+                service_4_title: "Digital Materials",
+                service_4_desc: "Development of banners, digital flyers, ads creatives, presentations and other essential materials.",
+                diff_title: 'I work with companies and professionals who need a <span class="text-[#b6f938]">strong image</span> in the local market.',
+                list_1: "Rebranding and logo creation",
+                list_2: "Creation of modern Websites and Landing Pages",
+                list_3: "Monthly content packages for social media",
+                list_4: "High-performance creatives for paid traffic",
+                hero_badge_short: "Strategic Designer",
+                diff_subtitle: "Here, design is not just aesthetic.",
+                diff_desc: "Each project is strategically designed for:",
+                val_1_t: "Trust",
+                val_1_d: "Generate immediate trust.",
+                val_2_t: "Positioning",
+                val_2_d: "Position your brand.",
+                portfolio_title: "Selected Portfolio",
+                portfolio_desc: "See some works done in visual identity, social media and digital materials.",
+                btn_portfolio: "View Full Portfolio",
+                open_new_tab: "Open in new tab",
+                lp_title: "Want a Landing Page like this?",
+                lp_desc: "I'll make it for you! Strategic design and high conversion for your business.",
+                btn_lp: "I want a landing page like this",
+                form_title: "Quick Quote",
+                form_subtitle: "Fill in the details below to receive a custom quote.",
+                label_name: "Name",
+                ph_name: "Your name or company",
+                ph_email: "your@email.com",
+                ph_whatsapp: "Your WhatsApp",
+                label_type: "Business Type",
+                ph_type: "Ex: Restaurant, Clinic, Real Estate...",
+                label_service: "Service",
+                opt_select: "Select...",
+                opt_1: "Visual Identity",
+                opt_2: "Institutional Website",
+                opt_3: "Landing Page",
+                opt_4: "Social Media",
+                opt_5: "Digital Materials",
+                opt_6: "Image Pack",
+                opt_7: "Others",
+                label_deadline: "Deadline",
+                ph_deadline: "Ex: Urgent, 1 month...",
+                label_msg: "Message",
+                ph_msg: "Describe your goal, references or links...",
+                btn_send: "Send Quote Request",
+                form_footer_text: "Prefer something faster?",
+                footer_copy: "&copy; 2026 All rights reserved.",
+                now: "Just now"
+            },
+            es: {
+                top_banner: "Disponible para nuevos proyectos en Lisboa y Región",
+                hero_badge: "Erick Anderson - Diseñador Estratégico",
+                hero_title: 'Diseñador Gráfico en <span class="font-serif italic font-normal text-gradient heading-gradient inline-block hover:scale-110 transition-transform duration-300 cursor-default">Lisboa</span> para negocios que quieren vender más',
+                hero_desc: "Identidad visual, sitios web, artes para redes sociales y materiales digitales enfocados en credibilidad, posicionamiento y conversión.",
+                hero_budget_text: "Presupuesto rápido y atención directa vía WhatsApp.",
+                btn_budget: "Pedir presupuesto",
+                btn_contact: "Contactar por WhatsApp",
+                prop_1: "Entrega rápida y organizada",
+                prop_2: "Diseño profesional",
+                prop_3: "Estrategia visual alineada",
+                prop_4: "Artes para conversión",
+                services_title: "Cómo puedo ayudar",
+                services_desc: "Soluciones visuales completas para elevar el nivel de tu marca.",
+                service_1_title: "Identidad Visual",
+                service_1_desc: "Creación o rediseño de logotipos, definición de colores, tipografía y patrones visuales para fortalecer la imagen de tu marca.",
+                service_2_title: "Sitios Web y Landing Pages",
+                service_2_desc: "Desarrollo de sitios institucionales y páginas de aterrizaje (landing pages) optimizadas para conversión y velocidad.",
+                service_3_title: "Artes para Redes Sociales",
+                service_3_desc: "Creación de artes para feed, historias y portadas, con un patrón visual consistente para atraer atención y generar confianza.",
+                service_4_title: "Materiales Digitales",
+                service_4_desc: "Desarrollo de banners, flyers digitales, creativos para anuncios, presentaciones y otros materiales esenciales.",
+                diff_title: 'Trabajo con empresas y profesionales que necesitan una <span class="text-[#b6f938]">imagen fuerte</span> en el mercado local.',
+                list_1: "Rebranding y creación de logotipos",
+                list_2: "Creación de Sitios Web y Landing Pages modernas",
+                list_3: "Paquetes mensuales de contenido para redes sociales",
+                list_4: "Creativos de alto rendimiento para tráfico pago",
+                hero_badge_short: "Diseñador Estratégico",
+                diff_subtitle: "Aquí, el diseño no es solo estético.",
+                diff_desc: "Cada proyecto está pensado estratégicamente para:",
+                val_1_t: "Confianza",
+                val_1_d: "Generar confianza inmediata.",
+                val_2_t: "Posicionamiento",
+                val_2_d: "Posicionar tu marca.",
+                portfolio_title: "Portafolio Seleccionado",
+                portfolio_desc: "Mira algunos trabajos realizados en identidad visual, redes sociales y materiales digitales.",
+                btn_portfolio: "Ver Portafolio Completo",
+                open_new_tab: "Abrir en nueva pestaña",
+                lp_title: "¿Quieres una Landing Page igual a esta?",
+                lp_desc: "¡Yo la hago para ti! Diseño estratégico y alta conversión para tu negocio.",
+                btn_lp: "Quiero una landing page como esta",
+                form_title: "Presupuesto rápido",
+                form_subtitle: "Rellena los datos abajo para recibir un presupuesto ajustado.",
+                label_name: "Nombre",
+                ph_name: "Tu nombre o el de la empresa",
+                ph_email: "tu@email.com",
+                ph_whatsapp: "Tu WhatsApp",
+                label_type: "Tipo de negocio",
+                ph_type: "Ej: Restaurante, Clínica, Inmobiliaria...",
+                label_service: "Servicio",
+                opt_select: "Seleccione...",
+                opt_1: "Identidad Visual",
+                opt_2: "Sitio Institucional",
+                opt_3: "Landing Page",
+                opt_4: "Redes Sociales",
+                opt_5: "Materiales Digitales",
+                opt_6: "Pack de Imágenes",
+                opt_7: "Otros",
+                label_deadline: "Plazo",
+                ph_deadline: "Ej: Urgente, 1 mes...",
+                label_msg: "Mensaje",
+                ph_msg: "Describe tu objetivo, referencias o enlaces...",
+                btn_send: "Enviar pedido de presupuesto",
+                form_footer_text: "¿Prefieres algo más rápido?",
+                footer_copy: "&copy; 2026 Todos los derechos reservados.",
+                now: "Ahora mismo"
+            }
+        };
+
+        const notificationsData = {
+            pt: [
+                { name: "Tiago Silva", action: "acabou de adquirir uma Landing Page" },
+                { name: "Marta Ferreira", action: "solicitou um orçamento de Rebranding" },
+                { name: "Café O Pescador", action: "fechou pacote de Redes Sociais" },
+                { name: "Gonçalo Reis", action: "iniciou projeto de Identidade Visual" },
+                { name: "TechSolutions PT", action: "contratou design para app" },
+                { name: "Beatriz Santos", action: "solicitou Landing Page" },
+                { name: "Rui Costa", action: "pediu orçamento para Web Design" },
+                { name: "Clínica Saúde Viva", action: "renovou a Identidade Visual" },
+                { name: "Sofia Mendes", action: "acabou de adquirir uma Landing Page" }
+            ],
+            en: [
+                { name: "James Smith", action: "just purchased a Landing Page" },
+                { name: "Sarah Connor", action: "requested a Rebranding quote" },
+                { name: "Fisherman's Cafe", action: "closed a Social Media package" },
+                { name: "George King", action: "started a Visual Identity project" },
+                { name: "TechSolutions UK", action: "hired design for app" },
+                { name: "Betty Saints", action: "requested a Landing Page" },
+                { name: "Roy Coast", action: "asked for Web Design quote" },
+                { name: "Live Health Clinic", action: "renewed Visual Identity" },
+                { name: "Sophie Mendez", action: "just purchased a Landing Page" }
+            ],
+            es: [
+                { name: "Alejandro García", action: "acaba de adquirir una Landing Page" },
+                { name: "Marta Fernández", action: "solicitó un presupuesto de Rebranding" },
+                { name: "Café El Pescador", action: "cerró paquete de Redes Sociales" },
+                { name: "Gonzalo Rey", action: "inició proyecto de Identidad Visual" },
+                { name: "TechSolutions ES", action: "contrató diseño para app" },
+                { name: "Beatriz Santos", action: "solicitó Landing Page" },
+                { name: "Raúl Costa", action: "pidió presupuesto para Diseño Web" },
+                { name: "Clínica Salud Viva", action: "renovó la Identidad Visual" },
+                { name: "Sofía Méndez", action: "acaba de adquirir una Landing Page" }
+            ]
+        };
+
+        let currentLang = 'pt';
+        const langs = ['pt', 'en', 'es'];
+        
+        function toggleLanguage() {
+            // Cycle through languages
+            let currentIndex = langs.indexOf(currentLang);
+            currentLang = langs[(currentIndex + 1) % langs.length];
+            
+            const langBtn = document.getElementById('lang-toggle');
+            if(currentLang === 'pt') langBtn.innerHTML = '<span class="text-xl">🇵🇹</span> PT';
+            if(currentLang === 'en') langBtn.innerHTML = '<span class="text-xl">🇺🇸</span> EN';
+            if(currentLang === 'es') langBtn.innerHTML = '<span class="text-xl">🇪🇸</span> ES';
+            
+            // Update Text Content
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.innerHTML = translations[currentLang][key]; // innerHTML to preserve HTML tags
+                }
+            });
+
+            // Update Placeholders
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (translations[currentLang][key]) {
+                    el.placeholder = translations[currentLang][key];
+                }
+            });
+        }
+
+        // Notification Logic with Language Support
+        function showNotification() {
+            const toast = document.getElementById('notification-toast');
+            const nameEl = document.getElementById('notif-name');
+            const actionEl = document.getElementById('notif-action');
+            
+            // Pick random notification based on current lang
+            const notifList = notificationsData[currentLang];
+            const randomNotif = notifList[Math.floor(Math.random() * notifList.length)];
+            
+            nameEl.textContent = randomNotif.name;
+            actionEl.textContent = randomNotif.action;
+            
+            toast.classList.add('show');
+            setTimeout(() => { toast.classList.remove('show'); }, 8000);
+            setTimeout(showNotification, 180000);
+        }
+        setTimeout(showNotification, 5000);
+
+    </script>
+</body>
+</html>
