@@ -11,8 +11,8 @@
     <meta property="og:title" content="Designer Gráfico em Lisboa | Erick Anderson">
     <meta property="og:description" content="Identidade visual, artes para redes sociais e materiais digitais com foco em credibilidade, posicionamento e conversão.">
     
-    <!-- Favicon (Genérico para substituição) -->
-    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <!-- Favicon -->
+    <link rel="icon" href="https://i.ibb.co/FkR0qb75/logo-erick-designer.png" type="image/png">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -26,13 +26,20 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        html { scroll-behavior: smooth; cursor: none; }
+        /* FIX: Define a cor no HTML para evitar fundo branco no scroll elástico (mobile) */
+        html { 
+            scroll-behavior: smooth; 
+            cursor: none; 
+            background-color: #020305; 
+        }
+        
         body {
-            background-color: #020305;
+            background-color: transparent; /* Permite ver o fundo fixo */
             color: #d5dbe6;
             font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
+            min-height: 100vh;
         }
 
         /* --- LANG TOGGLE --- */
@@ -189,12 +196,12 @@
 
         /* Ajuste de Inputs para garantir funcionamento */
         input, textarea, select {
-            background: rgba(2, 3, 5, 0.9); /* Mais opaco para garantir clique */
+            background: rgba(2, 3, 5, 0.9);
             border: 1px solid rgba(255, 255, 255, 0.1);
             color: white;
             transition: border-color 0.3s;
-            cursor: text; /* Força cursor de texto */
-            position: relative; /* Garante z-index */
+            cursor: text;
+            position: relative;
             z-index: 20;
         }
         input:focus, textarea:focus, select:focus {
@@ -276,9 +283,7 @@
             <div class="reveal">
                 <span class="inline-flex items-center gap-3 pl-2 pr-6 py-2 rounded-full border border-white/10 bg-[#b6f938]/10 text-base text-[#b6f938] font-medium mb-6 tracking-wide backdrop-blur-md animate-float">
                     <!-- FOTO GENÉRICA PARA SUBSTITUIÇÃO -->
-                   <img src="assets/img/foto-perfil.jpg"
-     alt="Erick Anderson"
-     class="w-12 h-12 rounded-full object-cover border-2 border-[#b6f938]/30">
+                    <img src="https://placehold.co/210x210/b6f938/020305?text=Foto" alt="Erick Anderson" class="w-12 h-12 rounded-full object-cover border-2 border-[#b6f938]/30">
                     <span data-i18n="hero_badge">Erick Anderson - Designer Estratégico</span>
                 </span>
                 <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6 leading-[1.1]" data-i18n="hero_title">
@@ -617,9 +622,7 @@
             <div class="text-left w-32 md:w-40">
                 <a href="#" class="interactive-hover block">
                     <!-- LOGO GENÉRICO PARA SUBSTITUIÇÃO -->
-                    <img src="assets/img/logo.png"
-     alt="Logo Erick Anderson Designer"
-     class="w-full h-auto">
+                    <img src="https://placehold.co/200x60/020305/b6f938?text=Seu+Logo+Aqui" alt="logo-erick-designer" border="0" class="w-full h-auto">
                 </a>
             </div>
             
