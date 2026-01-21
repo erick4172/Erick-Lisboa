@@ -566,7 +566,7 @@
                     <h2 class="text-3xl font-bold text-center mb-2 text-white" data-i18n="form_title">Orçamento rápido</h2>
                     <p class="text-center text-gray-400 mb-8 text-sm" data-i18n="form_subtitle">Preencha os dados abaixo para receber um orçamento ajustado.</p>
                     
-                    <!-- Configuração Netlify Forms: Exatamente conforme solicitado -->
+                    <!-- Configuração Netlify Forms: Atualizada conforme solicitado -->
                     <form 
                         name="contact" 
                         method="POST" 
@@ -575,9 +575,10 @@
                         netlify-honeypot="bot-field" 
                         class="space-y-5"
                     >
-                        <!-- Campos ocultos obrigatórios -->
+                        <!-- Campos ocultos obrigatórios para Netlify -->
                         <input type="hidden" name="form-name" value="contact">
                         
+                        <!-- Campo Honeypot (Proteção Anti-Spam) -->
                         <p class="hidden">
                             <label>
                                 Don’t fill this out if you’re human:
@@ -585,10 +586,9 @@
                             </label>
                         </p>
 
-                        <!-- Campos do Formulário -->
                         <div class="relative z-20">
                             <label class="block text-xs font-bold text-gray-400 mb-1 ml-1 uppercase tracking-wider" data-i18n="label_name">Nome</label>
-                            <input type="text" name="nome" class="w-full p-4 rounded-xl interactive-hover" placeholder="O seu nome ou da empresa" required data-i18n-placeholder="ph_name">
+                            <input type="text" name="name" class="w-full p-4 rounded-xl interactive-hover" placeholder="O seu nome ou da empresa" required data-i18n-placeholder="ph_name">
                         </div>
 
                         <div class="relative z-20">
@@ -618,7 +618,6 @@
                                     <option value="+238">🇨🇻 +238 (Cabo Verde)</option>
                                     <option value="+239">🇸🇹 +239 (São Tomé)</option>
                                     <option value="+245">🇬🇼 +245 (Guiné-Bissau)</option>
-                                    <!-- Lista completa simplificada -->
                                     <option value="" disabled>-----------</option>
                                     <option value="+93">🇦🇫 +93 Afghanistan</option>
                                     <option value="+355">🇦🇱 +355 Albania</option>
@@ -693,7 +692,7 @@
 
                         <div class="relative z-20">
                             <label class="block text-xs font-bold text-gray-400 mb-1 ml-1 uppercase tracking-wider" data-i18n="label_msg">Mensagem</label>
-                            <textarea name="mensagem" rows="4" class="w-full p-4 rounded-xl interactive-hover" placeholder="Descreva o seu objetivo, referências ou links..." required data-i18n-placeholder="ph_msg"></textarea>
+                            <textarea name="message" rows="4" class="w-full p-4 rounded-xl interactive-hover" placeholder="Descreva o seu objetivo, referências ou links..." required data-i18n-placeholder="ph_msg"></textarea>
                         </div>
 
                         <button type="submit" class="w-full btn-primary py-4 rounded-xl font-bold text-lg mt-2 shadow-lg interactive-hover relative z-20" data-i18n="btn_send">
