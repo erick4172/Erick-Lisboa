@@ -11,8 +11,8 @@
     <meta property="og:title" content="Designer Gráfico em Lisboa | Erick Anderson">
     <meta property="og:description" content="Identidade visual, artes para redes sociais e materiais digitais com foco em credibilidade, posicionamento e conversão.">
     
-    <!-- Favicon -->
-    <link rel="icon" href="https://i.ibb.co/FkR0qb75/logo-erick-designer.png" type="image/png">
+    <!-- Favicon (Caminho local) -->
+    <link rel="icon" href="images/logo-erick-designer.png" type="image/png">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -26,7 +26,6 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        /* FIX: Define a cor no HTML para evitar fundo branco no scroll elástico (mobile) */
         html { 
             scroll-behavior: smooth; 
             cursor: none; 
@@ -34,12 +33,12 @@
         }
         
         body {
-            background-color: transparent; /* Permite ver o fundo fixo */
+            background-color: transparent; /* Importante para ver as camadas de fundo */
             color: #d5dbe6;
             font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
-            min-height: 100vh;
+            position: relative;
         }
 
         /* --- LANG TOGGLE --- */
@@ -235,6 +234,18 @@
                 width: auto;
             }
         }
+
+        /* --- PARTICLES BACKGROUND --- */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: transparent; /* Transparente para ver os blobs */
+            z-index: 0; /* Camada intermediária */
+            pointer-events: none;
+        }
     </style>
 </head>
 <body class="overflow-x-hidden relative">
@@ -248,7 +259,7 @@
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
 
-    <!-- BACKGROUND ANIMADO GLOBAL -->
+    <!-- CAMADA 1: FUNDO COLORIDO (Blobs) -->
     <div class="fixed inset-0 -z-50 overflow-hidden pointer-events-none">
         <div class="absolute inset-0 bg-[#020305]"></div>
         <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#b6f938] rounded-full mix-blend-screen filter blur-[120px] opacity-5 animate-blob"></div>
@@ -256,6 +267,9 @@
         <div class="absolute -bottom-32 left-1/3 w-[600px] h-[600px] bg-[#b6f938] rounded-full mix-blend-screen filter blur-[150px] opacity-5 animate-blob animation-delay-4000"></div>
         <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.05%22/%3E%3C/svg%3E');"></div>
     </div>
+
+    <!-- CAMADA 2: PARTÍCULAS (Sobre o fundo colorido) -->
+    <div id="particles-js"></div>
 
     <!-- Notificação de Prova Social -->
     <div id="notification-toast" class="card-border rounded-xl p-4 flex items-center gap-4 shadow-2xl backdrop-blur-xl border-l-4 border-l-[#b6f938]">
@@ -282,8 +296,8 @@
         <div class="max-w-4xl mx-auto text-center relative z-10">
             <div class="reveal">
                 <span class="inline-flex items-center gap-3 pl-2 pr-6 py-2 rounded-full border border-white/10 bg-[#b6f938]/10 text-base text-[#b6f938] font-medium mb-6 tracking-wide backdrop-blur-md animate-float">
-                    <!-- FOTO GENÉRICA PARA SUBSTITUIÇÃO -->
-                    <img src="https://placehold.co/210x210/b6f938/020305?text=Foto" alt="Erick Anderson" class="w-12 h-12 rounded-full object-cover border-2 border-[#b6f938]/30">
+                    <!-- FOTO LOCAL: images/foto-erick.png -->
+                    <img src="images/foto-erick.png" alt="Erick Anderson" class="w-12 h-12 rounded-full object-cover border-2 border-[#b6f938]/30">
                     <span data-i18n="hero_badge">Erick Anderson - Designer Estratégico</span>
                 </span>
                 <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6 leading-[1.1]" data-i18n="hero_title">
@@ -429,9 +443,9 @@
             <!-- Coluna Direita: FOTO + DIFERENCIAL -->
             <div class="flex flex-col gap-6 reveal delay-100">
                 <div class="relative w-full aspect-[4/5] sm:aspect-square md:aspect-video lg:aspect-[4/3] rounded-3xl overflow-hidden border border-white/10 group cursor-pointer shadow-2xl interactive-hover">
-                    <a href="https://ibb.co/RkGhzFx7" target="_blank">
-                        <!-- FOTO GENÉRICA PARA SUBSTITUIÇÃO -->
-                        <img src="https://placehold.co/800x1000/1f2937/b6f938?text=Sua+Foto+Aqui" 
+                    <a href="images/foto-erick-grande.png" target="_blank">
+                        <!-- FOTO LOCAL: images/foto-erick-grande.png -->
+                        <img src="images/foto-erick-grande.png" 
                              alt="Erick Anderson - Designer Gráfico" 
                              border="0"
                              class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out transform group-hover:scale-105">
@@ -621,8 +635,8 @@
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
             <div class="text-left w-32 md:w-40">
                 <a href="#" class="interactive-hover block">
-                    <!-- LOGO GENÉRICO PARA SUBSTITUIÇÃO -->
-                    <img src="https://placehold.co/200x60/020305/b6f938?text=Seu+Logo+Aqui" alt="logo-erick-designer" border="0" class="w-full h-auto">
+                    <!-- LOGO LOCAL: images/logo-erick-designer.png -->
+                    <img src="images/logo-erick-designer.png" alt="logo-erick-designer" border="0" class="w-full h-auto">
                 </a>
             </div>
             
@@ -638,6 +652,8 @@
         </div>
     </footer>
 
+    <!-- PARTICLES.JS IMPORT (Mantenha este script para as partículas funcionarem) -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
         lucide.createIcons();
 
@@ -698,6 +714,113 @@
             card.addEventListener('mouseleave', () => {
                 card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
             });
+        });
+
+        // --- PARTICLES.JS CONFIG ---
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 40,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#b6f938"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 0.3,
+                    "random": true,
+                    "anim": {
+                        "enable": true,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#b6f938",
+                    "opacity": 0.2,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 0.5
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
         });
 
         // --- TRANSLATION LOGIC ---
@@ -840,7 +963,7 @@
                 top_banner: "Disponible para nuevos proyectos en Lisboa y Región",
                 hero_badge: "Erick Anderson - Diseñador Estratégico",
                 hero_title: 'Diseñador Gráfico en <span class="font-serif italic font-normal text-gradient heading-gradient inline-block hover:scale-110 transition-transform duration-300 cursor-default">Lisboa</span> para negocios que quieren vender más',
-                hero_desc: "Identidad visual, sitios web, artes para redes sociales y materiales digitales enfocados en credibilidad, posicionamento y conversión.",
+                hero_desc: "Identidad visual, sitios web, artes para redes sociais y materiales digitales enfocados en credibilidad, posicionamento y conversión.",
                 hero_budget_text: "Presupuesto rápido y atención directa vía WhatsApp.",
                 btn_budget: "Pedir presupuesto",
                 btn_contact: "Contactar por WhatsApp",
