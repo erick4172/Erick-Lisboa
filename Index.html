@@ -566,9 +566,26 @@
                     <h2 class="text-3xl font-bold text-center mb-2 text-white" data-i18n="form_title">Orçamento rápido</h2>
                     <p class="text-center text-gray-400 mb-8 text-sm" data-i18n="form_subtitle">Preencha os dados abaixo para receber um orçamento ajustado.</p>
                     
-                    <form name="contact" method="POST" action="/obrigado.html" data-netlify="true" class="space-y-5">
+                    <!-- Configuração Netlify Forms: Exatamente conforme solicitado -->
+                    <form 
+                        name="contact" 
+                        method="POST" 
+                        action="/obrigado/" 
+                        data-netlify="true" 
+                        netlify-honeypot="bot-field" 
+                        class="space-y-5"
+                    >
+                        <!-- Campos ocultos obrigatórios -->
                         <input type="hidden" name="form-name" value="contact">
+                        
+                        <p class="hidden">
+                            <label>
+                                Don’t fill this out if you’re human:
+                                <input name="bot-field" type="text" />
+                            </label>
+                        </p>
 
+                        <!-- Campos do Formulário -->
                         <div class="relative z-20">
                             <label class="block text-xs font-bold text-gray-400 mb-1 ml-1 uppercase tracking-wider" data-i18n="label_name">Nome</label>
                             <input type="text" name="nome" class="w-full p-4 rounded-xl interactive-hover" placeholder="O seu nome ou da empresa" required data-i18n-placeholder="ph_name">
@@ -579,9 +596,74 @@
                             <input type="email" name="email" class="w-full p-4 rounded-xl interactive-hover" placeholder="o-seu@email.com" required data-i18n-placeholder="ph_email">
                         </div>
 
+                        <!-- WHATSAPP COM SELETOR DE PAÍS -->
                         <div class="relative z-20">
                             <label class="block text-xs font-bold text-gray-400 mb-1 ml-1 uppercase tracking-wider">WhatsApp</label>
-                            <input type="tel" name="whatsapp" class="w-full p-4 rounded-xl interactive-hover" placeholder="O seu WhatsApp" required data-i18n-placeholder="ph_whatsapp">
+                            <div class="flex gap-2">
+                                <select name="ddi" class="w-1/3 sm:w-1/4 p-4 rounded-xl interactive-hover text-white outline-none border border-white/10 focus:border-[#b6f938]">
+                                    <option value="+351" selected>🇵🇹 +351 (Portugal)</option>
+                                    <option value="+55">🇧🇷 +55 (Brasil)</option>
+                                    <option value="+34">🇪🇸 +34 (Espanha)</option>
+                                    <option value="+1">🇺🇸 +1 (EUA)</option>
+                                    <option value="+44">🇬🇧 +44 (Reino Unido)</option>
+                                    <option value="+33">🇫🇷 +33 (França)</option>
+                                    <option value="+49">🇩🇪 +49 (Alemanha)</option>
+                                    <option value="+39">🇮🇹 +39 (Itália)</option>
+                                    <option value="+41">🇨🇭 +41 (Suíça)</option>
+                                    <option value="+352">🇱🇺 +352 (Luxemburgo)</option>
+                                    <option value="+32">🇧🇪 +32 (Bélgica)</option>
+                                    <option value="+31">🇳🇱 +31 (Holanda)</option>
+                                    <option value="+244">🇦🇴 +244 (Angola)</option>
+                                    <option value="+258">🇲🇿 +258 (Moçambique)</option>
+                                    <option value="+238">🇨🇻 +238 (Cabo Verde)</option>
+                                    <option value="+239">🇸🇹 +239 (São Tomé)</option>
+                                    <option value="+245">🇬🇼 +245 (Guiné-Bissau)</option>
+                                    <!-- Lista completa simplificada -->
+                                    <option value="" disabled>-----------</option>
+                                    <option value="+93">🇦🇫 +93 Afghanistan</option>
+                                    <option value="+355">🇦🇱 +355 Albania</option>
+                                    <option value="+213">🇩🇿 +213 Algeria</option>
+                                    <option value="+376">🇦🇩 +376 Andorra</option>
+                                    <option value="+54">🇦🇷 +54 Argentina</option>
+                                    <option value="+61">🇦🇺 +61 Australia</option>
+                                    <option value="+43">🇦🇹 +43 Austria</option>
+                                    <option value="+591">🇧🇴 +591 Bolivia</option>
+                                    <option value="+1">🇨🇦 +1 Canada</option>
+                                    <option value="+56">🇨🇱 +56 Chile</option>
+                                    <option value="+86">🇨🇳 +86 China</option>
+                                    <option value="+57">🇨🇴 +57 Colombia</option>
+                                    <option value="+45">🇩🇰 +45 Denmark</option>
+                                    <option value="+20">🇪🇬 +20 Egypt</option>
+                                    <option value="+358">🇫🇮 +358 Finland</option>
+                                    <option value="+30">🇬🇷 +30 Greece</option>
+                                    <option value="+852">🇭🇰 +852 Hong Kong</option>
+                                    <option value="+36">🇭🇺 +36 Hungary</option>
+                                    <option value="+354">🇮🇸 +354 Iceland</option>
+                                    <option value="+91">🇮🇳 +91 India</option>
+                                    <option value="+62">🇮🇩 +62 Indonesia</option>
+                                    <option value="+353">🇮🇪 +353 Ireland</option>
+                                    <option value="+972">🇮🇱 +972 Israel</option>
+                                    <option value="+81">🇯🇵 +81 Japan</option>
+                                    <option value="+52">🇲🇽 +52 Mexico</option>
+                                    <option value="+377">🇲🇨 +377 Monaco</option>
+                                    <option value="+212">🇲🇦 +212 Morocco</option>
+                                    <option value="+64">🇳🇿 +64 New Zealand</option>
+                                    <option value="+47">🇳🇴 +47 Norway</option>
+                                    <option value="+51">🇵🇪 +51 Peru</option>
+                                    <option value="+48">🇵🇱 +48 Poland</option>
+                                    <option value="+7">🇷🇺 +7 Russia</option>
+                                    <option value="+65">🇸🇬 +65 Singapore</option>
+                                    <option value="+27">🇿🇦 +27 South Africa</option>
+                                    <option value="+82">🇰🇷 +82 South Korea</option>
+                                    <option value="+46">🇸🇪 +46 Sweden</option>
+                                    <option value="+41">🇨🇭 +41 Switzerland</option>
+                                    <option value="+90">🇹🇷 +90 Turkey</option>
+                                    <option value="+971">🇦🇪 +971 UAE</option>
+                                    <option value="+380">🇺🇦 +380 Ukraine</option>
+                                    <option value="+58">🇻🇪 +58 Venezuela</option>
+                                </select>
+                                <input type="tel" name="whatsapp" class="w-2/3 sm:w-3/4 p-4 rounded-xl interactive-hover" placeholder="912 345 678" required data-i18n-placeholder="ph_whatsapp">
+                            </div>
                         </div>
                         
                         <div class="relative z-20">
@@ -1115,32 +1197,5 @@
         setTimeout(showNotification, 5000);
 
     </script>
-    <form
-  name="contact"
-  method="POST"
-  action="/obrigado/"
-  data-netlify="true"
-  netlify-honeypot="bot-field"
->
-  <input type="hidden" name="form-name" value="contact" />
-
-  <p class="hidden">
-    <label>
-      Don’t fill this out if you’re human:
-      <input name="bot-field" type="text" />
-    </label>
-  </p>
-
-  <p>
-    <label>Email: <input type="email" name="email" required /></label>
-  </p>
-
-  <p>
-    <label>Message: <textarea name="message" required></textarea></label>
-  </p>
-
-  <p><button type="submit">Send</button></p>
-</form>
 </body>
-
 </html>
