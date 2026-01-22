@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Mim | Erick Anderson</title>
+    <meta name="description" content="Conheça a trajetória e a metodologia de Erick Anderson, Designer Gráfico Especialista em identidade visual e estratégia de marca.">
+    
+    <!-- Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Sobre Mim | Erick Anderson">
+    <meta property="og:description" content="Conheça a trajetória e a metodologia de Erick Anderson, Designer Gráfico Especialista.">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/img/favicon.png" type="image/png">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Estilos -->
+    <style>
+        html { 
+            scroll-behavior: smooth; 
+            cursor: none; 
+            background-color: #020305; 
+        }
+        
+        body {
+            background-color: transparent;
+            color: #d5dbe6;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* --- MENU SUPERIOR (NAVBAR) --- */
+        #main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+            background: rgba(2, 3, 5, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 8px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link {
+            position: relative;
+            color: #d5dbe6;
+            font-weight: 500;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #b6f938;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #b6f938;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* --- CURSOR CUSTOMIZADO --- */
+        .cursor-dot, .cursor-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+        }
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #b6f938;
+            box-shadow: 0 0 10px #b6f938;
+        }
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(182, 249, 56, 0.5);
+            transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s;
+        }
+        body.hovering .cursor-outline {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(182, 249, 56, 0.1);
+            border-color: transparent;
+        }
+        @media (max-width: 768px) {
+            html { cursor: auto; }
+            .cursor-dot, .cursor-outline { display: none; }
+        }
+
+        .font-serif { font-family: 'Instrument Serif', serif; }
+        .font-manrope { font-family: 'Manrope', sans-serif; }
+        
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .heading-gradient { background-image: linear-gradient(138deg, #d5dbe6 50%, #04070d 160%); }
+
+        .btn-primary {
+            background-color: #b6f938;
+            color: #04070d;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(182, 249, 56, 0.3);
+        }
+        .btn-primary:hover {
+            background-color: #a3e635;
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(182, 249, 56, 0.5);
+        }
+
+        .btn-outline {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.03);
+            transition: all 0.3s ease;
+        }
+        .btn-outline:hover {
+            border-color: #b6f938;
+            color: #b6f938;
+            background: rgba(182, 249, 56, 0.05);
+        }
+
+        .card-border {
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            background: rgba(8, 10, 15, 0.7);
+            backdrop-filter: blur(12px);
+            box-shadow: inset 0 2px 1px rgba(255, 255, 255, 0.02);
+        }
+        
+        .tilt-card {
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+        }
+        .card-content { transform: translateZ(20px); }
+
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animate-blob { animation: blob 10s infinite alternate; }
+        .animation-delay-2000 { animation-delay: 2s; }
+        .animation-delay-4000 { animation-delay: 4s; }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: transparent;
+            z-index: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden relative">
+
+    <!-- ELEMENTOS DO CURSOR -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- MENU SUPERIOR -->
+    <nav id="main-nav">
+        <div class="max-w-[1800px] mx-auto px-6 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="index.html" class="interactive-hover w-28 md:w-36">
+                <img src="assets/img/logo.png" alt="Erick Anderson" class="w-full h-auto" onerror="this.onerror=null; this.src='https://placehold.co/200x60/020305/b6f938?text=LOGO';">
+            </a>
+
+            <!-- Menu Desktop -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="nav-link interactive-hover">Início</a>
+                <a href="#" class="nav-link active interactive-hover">Sobre</a>
+                <a href="index.html#servicos" class="nav-link interactive-hover">Serviços</a>
+                <a href="index.html#portfolio" class="nav-link interactive-hover">Portfólio</a>
+                <a href="index.html#form-orcamento" class="nav-link interactive-hover">Contato</a>
+            </div>
+
+            <!-- Direita -->
+            <div class="flex items-center gap-4">
+                <a href="https://wa.me/5533987005458" target="_blank" class="btn-primary px-5 py-2 rounded-full font-bold text-xs md:text-sm interactive-hover">
+                    Orçamento
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- BACKGROUND ANIMADO GLOBAL -->
+    <div class="fixed inset-0 -z-50 overflow-hidden pointer-events-none">
+        <div class="absolute inset-0 bg-[#020305]"></div>
+        <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#b6f938] rounded-full mix-blend-screen filter blur-[120px] opacity-5 animate-blob"></div>
+        <div class="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-purple-900 rounded-full mix-blend-screen filter blur-[120px] opacity-5 animate-blob animation-delay-2000"></div>
+        <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.05%22/%3E%3C/svg%3E');"></div>
+    </div>
+
+    <!-- CAMADA 2: PARTÍCULAS -->
+    <div id="particles-js"></div>
+
+    <!-- Cabeçalho "Sobre" -->
+    <section class="relative pt-40 pb-20 px-6 overflow-hidden z-10">
+        <div class="max-w-5xl mx-auto text-center reveal">
+            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm text-[#b6f938] font-medium mb-8 tracking-wide animate-float">
+                <i data-lucide="user" class="w-4 h-4"></i>
+                Quem sou eu
+            </span>
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
+                Muito prazer, eu sou o <br/>
+                <span class="font-serif italic font-normal text-gradient heading-gradient">Erick Anderson</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto font-manrope leading-relaxed">
+                Designer Gráfico, estrategista visual e apaixonado por transformar negócios comuns em marcas memoráveis através do design.
+            </p>
+        </div>
+    </section>
+
+    <!-- Biografia e Foto -->
+    <section class="py-20 px-6 relative z-10">
+        <div class="max-w-[1800px] mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <!-- Coluna da Foto -->
+                <div class="relative reveal group">
+                    <div class="absolute -inset-4 bg-[#b6f938]/20 rounded-[2rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                    <div class="relative w-full aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 tilt-card">
+                         <!-- Foto Atualizada para .png -->
+                        <img src="assets/img/sobremimfotogrande.png" 
+                             alt="Erick Anderson" 
+                             class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                             onerror="this.onerror=null; this.src='https://placehold.co/800x1000/1f2937/b6f938?text=Foto+do+Erick';">
+                    </div>
+                    <!-- Card Flutuante de Experiência -->
+                    <div class="absolute -bottom-6 -right-6 md:bottom-10 md:-right-10 bg-[#0c1019] p-6 rounded-2xl border border-white/10 shadow-2xl animate-float" style="animation-delay: 1s;">
+                        <div class="flex items-center gap-4">
+                            <!-- Experiência Atualizada -->
+                            <div class="text-4xl font-bold text-[#b6f938]">25+</div>
+                            <div class="text-sm text-gray-400 leading-tight">
+                                Anos de<br/>Experiência
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coluna de Texto -->
+                <div class="reveal delay-100">
+                    <h2 class="text-3xl font-bold text-white mb-6">Mais do que "fazer artes", eu crio soluções.</h2>
+                    <div class="space-y-6 text-gray-400 font-manrope text-lg leading-relaxed">
+                        <p>
+                            Sou <strong>Erick Anderson</strong>, casado com <strong>Laura</strong> e agraciado com a paternidade pelo <strong>Henrique, Vitor e João</strong>. Minha jornada no design começou há <strong>mais de 25 anos</strong>, quando ainda criança, andando de bicicleta, encontrei um CD jogado no chão.
+                        </p>
+                        <p>
+                            O ano era <strong>1999</strong> e eu tinha acabado de ganhar um computador do meu pai. Era um mega instrumento tecnológico. Quando vi aquele CD escrito <strong>"Corel Draw 4"</strong>, achei que era um jogo, mas era um programa de edição que despertou minha curiosidade. Comecei a mexer e a criar minhas primeiras artes.
+                        </p>
+                        <p>
+                            Foi aí que recebi um convite para trabalhar numa gráfica como <strong>"arte finalista"</strong> aos <strong>11 anos</strong>, e nunca mais saí. Me especializei, me atualizei e me tornei referência em design gráfico, buscando novidades todos os dias.
+                        </p>
+                        <p>
+                            Especialista em criar soluções, tenho <strong>mais de 400 clientes atendidos em 2 anos</strong> de trabalho recente e um portfólio robusto! Ao longo da vida, nas gráficas por onde passei, atendi <strong>milhares de clientes</strong> extremamente satisfeitos. Trabalhar comigo é um desafio, pois gosto de surpreender e entregar sempre mais. <strong class="text-white">Nunca é só arte, sempre é solução!</strong>
+                        </p>
+                    </div>
+
+                    <!-- Botões Sociais Atualizados -->
+                    <div class="flex gap-4 mt-10">
+                        <!-- Instagram (Mantido) -->
+                        <a href="https://www.instagram.com/oerickanderson/" target="_blank" class="p-3 rounded-full border border-white/10 hover:border-[#b6f938] hover:text-[#b6f938] hover:bg-[#b6f938]/10 transition-all interactive-hover" title="Instagram">
+                            <i data-lucide="instagram" class="w-6 h-6"></i>
+                        </a>
+                        
+                        <!-- Email (Substituindo site/dribbble) -->
+                        <a href="mailto:erick@erickanderson.com.br" class="p-3 rounded-full border border-white/10 hover:border-[#b6f938] hover:text-[#b6f938] hover:bg-[#b6f938]/10 transition-all interactive-hover" title="Enviar Email">
+                            <i data-lucide="mail" class="w-6 h-6"></i>
+                        </a>
+
+                        <!-- LinkedIn (Removido) -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metodologia / Como Trabalho -->
+    <section class="py-24 px-6 relative z-10 bg-white/5 border-y border-white/5">
+        <div class="max-w-[1800px] mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Como eu trabalho</h2>
+                <p class="text-gray-400">Meu processo criativo é dividido em 4 etapas fundamentais.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Etapa 1 -->
+                <div class="card-border p-8 rounded-2xl reveal hover:-translate-y-2 transition-transform duration-300">
+                    <div class="text-5xl font-bold text-white/10 mb-4">01</div>
+                    <h3 class="text-xl font-bold text-[#b6f938] mb-3">Briefing</h3>
+                    <p class="text-sm text-gray-400">Entendo a fundo o seu negócio, seus objetivos e quem é o seu público-alvo. A base de tudo.</p>
+                </div>
+                <!-- Etapa 2 -->
+                <div class="card-border p-8 rounded-2xl reveal delay-100 hover:-translate-y-2 transition-transform duration-300">
+                    <div class="text-5xl font-bold text-white/10 mb-4">02</div>
+                    <h3 class="text-xl font-bold text-[#b6f938] mb-3">Pesquisa</h3>
+                    <p class="text-sm text-gray-400">Analiso o mercado, referências visuais e concorrentes para encontrar oportunidades únicas.</p>
+                </div>
+                <!-- Etapa 3 -->
+                <div class="card-border p-8 rounded-2xl reveal delay-200 hover:-translate-y-2 transition-transform duration-300">
+                    <div class="text-5xl font-bold text-white/10 mb-4">03</div>
+                    <h3 class="text-xl font-bold text-[#b6f938] mb-3">Criação</h3>
+                    <p class="text-sm text-gray-400">É hora de colocar a mão na massa. Esboços, testes de cores e finalização do design.</p>
+                </div>
+                <!-- Etapa 4 -->
+                <div class="card-border p-8 rounded-2xl reveal delay-300 hover:-translate-y-2 transition-transform duration-300">
+                    <div class="text-5xl font-bold text-white/10 mb-4">04</div>
+                    <h3 class="text-xl font-bold text-[#b6f938] mb-3">Entrega</h3>
+                    <p class="text-sm text-gray-400">Apresentação do projeto e entrega dos arquivos organizados e prontos para uso.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ferramentas & Skills -->
+    <section class="py-24 px-6 relative z-10">
+        <div class="max-w-4xl mx-auto text-center reveal">
+            <h2 class="text-3xl font-bold text-white mb-12">Meu Arsenal Criativo</h2>
+            
+            <div class="flex flex-wrap justify-center gap-4 md:gap-8">
+                <div class="px-6 py-4 rounded-xl border border-white/10 bg-[#0c1019] flex items-center gap-3 hover:border-[#b6f938]/50 transition-colors">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg" class="w-8 h-8" alt="Photoshop">
+                    <span class="text-gray-300 font-bold">Photoshop</span>
+                </div>
+                <div class="px-6 py-4 rounded-xl border border-white/10 bg-[#0c1019] flex items-center gap-3 hover:border-[#b6f938]/50 transition-colors">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-plain.svg" class="w-8 h-8" alt="Illustrator">
+                    <span class="text-gray-300 font-bold">Illustrator</span>
+                </div>
+                <!-- Corel Draw -->
+                <div class="px-6 py-4 rounded-xl border border-white/10 bg-[#0c1019] flex items-center gap-3 hover:border-[#b6f938]/50 transition-colors">
+                     <i data-lucide="pen-tool" class="w-8 h-8 text-green-500"></i>
+                    <span class="text-gray-300 font-bold">Corel Draw</span>
+                </div>
+                <div class="px-6 py-4 rounded-xl border border-white/10 bg-[#0c1019] flex items-center gap-3 hover:border-[#b6f938]/50 transition-colors">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" class="w-8 h-8" alt="Figma">
+                    <span class="text-gray-300 font-bold">Figma</span>
+                </div>
+                <!-- After Effects -->
+                <div class="px-6 py-4 rounded-xl border border-white/10 bg-[#0c1019] flex items-center gap-3 hover:border-[#b6f938]/50 transition-colors">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/aftereffects/aftereffects-original.svg" class="w-8 h-8" alt="After Effects">
+                    <span class="text-gray-300 font-bold">After Effects</span>
+                </div>
+                 <!-- CapCut -->
+                <div class="px-6 py-4 rounded-xl border border-white/10 bg-[#0c1019] flex items-center gap-3 hover:border-[#b6f938]/50 transition-colors">
+                     <i data-lucide="scissors" class="w-8 h-8 text-white"></i>
+                    <span class="text-gray-300 font-bold">CapCut</span>
+                </div>
+                <div class="px-6 py-4 rounded-xl border border-white/10 bg-[#0c1019] flex items-center gap-3 hover:border-[#b6f938]/50 transition-colors">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg" class="w-8 h-8" alt="Canva">
+                    <span class="text-gray-300 font-bold">Canva Pro</span>
+                </div>
+                <div class="px-6 py-4 rounded-xl border border-white/10 bg-[#0c1019] flex items-center gap-3 hover:border-[#b6f938]/50 transition-colors">
+                    <i data-lucide="cpu" class="w-8 h-8 text-[#b6f938]"></i>
+                    <span class="text-gray-300 font-bold">Inteligência Artificial</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="py-20 px-6 relative z-10">
+        <div class="max-w-4xl mx-auto">
+            <div class="card-border p-12 rounded-3xl text-center relative overflow-hidden group">
+                <div class="absolute inset-0 bg-gradient-to-r from-[#b6f938]/10 to-purple-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 relative z-10">
+                    Vamos criar algo incrível juntos?
+                </h2>
+                <p class="text-gray-400 text-lg mb-8 max-w-xl mx-auto relative z-10">
+                    Se você busca um parceiro estratégico para elevar o nível da sua marca, estou pronto para ajudar.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10">
+                    <a href="index.html#form-orcamento" class="btn-primary px-8 py-4 rounded-full font-bold text-lg w-full sm:w-auto interactive-hover">
+                        Solicitar Orçamento
+                    </a>
+                    <a href="https://wa.me/5533987005458" target="_blank" class="btn-outline px-8 py-4 rounded-full font-bold text-lg w-full sm:w-auto interactive-hover flex items-center justify-center gap-2">
+                        <i data-lucide="message-circle" class="w-5 h-5"></i>
+                        WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 px-6 text-center border-t border-white/5 bg-black/90 backdrop-blur-md relative z-10">
+        <div class="max-w-[1800px] mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="text-left w-32 md:w-40">
+                <a href="index.html" class="interactive-hover block">
+                    <img src="assets/img/logo.png" alt="logo-erick-designer" border="0" class="w-full h-auto" onerror="this.onerror=null; this.src='https://placehold.co/200x60/020305/b6f938?text=LOGO';">
+                </a>
+            </div>
+            
+            <div class="text-sm text-gray-600">
+                &copy; 2026 Todos os direitos reservados. | Criado com 💚 por Erick Anderson
+            </div>
+
+            <div class="flex gap-6">
+                <a href="https://www.instagram.com/oerickanderson/" target="_blank" class="text-gray-500 hover:text-[#b6f938] transition-colors interactive-hover"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                <a href="mailto:erick@erickanderson.com.br" class="text-gray-500 hover:text-[#b6f938] transition-colors interactive-hover"><i data-lucide="mail" class="w-5 h-5"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        lucide.createIcons();
+
+        // Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        revealElements.forEach(el => observer.observe(el));
+
+        // Cursor Logic
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+            cursorOutline.style.left = `${posX}px`;
+            cursorOutline.style.top = `${posY}px`;
+        });
+        const interactiveElements = document.querySelectorAll('a, button, .interactive-hover');
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+            el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+        });
+
+        // Tilt Logic
+        document.querySelectorAll('.tilt-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * -10; 
+                const rotateY = ((x - centerX) / centerX) * 10;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            });
+        });
+
+        // Particles Config
+        particlesJS("particles-js", {
+            "particles": { "number": { "value": 30, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#b6f938" }, "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" } }, "opacity": { "value": 0.2, "random": true }, "size": { "value": 3, "random": true }, "line_linked": { "enable": true, "distance": 150, "color": "#b6f938", "opacity": 0.1, "width": 1 }, "move": { "enable": true, "speed": 1 } }, "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "grab" } } }, "retina_detect": true
+        });
+    </script>
+</body>
+</html>
