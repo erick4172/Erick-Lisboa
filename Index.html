@@ -41,17 +41,17 @@
             position: relative;
         }
 
-        /* --- MENU SUPERIOR (NAVBAR) --- */
+        /* --- MENU SUPERIOR (NAVBAR) - Mais fino --- */
         #main-nav {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 999; /* Acima de quase tudo, abaixo do cursor */
-            background: rgba(2, 3, 5, 0.7);
+            z-index: 999;
+            background: rgba(2, 3, 5, 0.85); /* Um pouco mais opaco para leitura */
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 15px 0;
+            padding: 8px 0; /* Reduzido de 15px para 8px */
             transition: all 0.3s ease;
         }
         
@@ -79,7 +79,7 @@
             width: 100%;
         }
 
-        /* --- LANG TOGGLE (Ajustado posição) --- */
+        /* --- LANG TOGGLE --- */
         #lang-toggle {
             background: rgba(182, 249, 56, 0.1);
             border: 1px solid rgba(182, 249, 56, 0.3);
@@ -175,10 +175,10 @@
             background-color: transparent;
             border: 1px solid #b6f938;
             color: #b6f938;
-            padding: 8px 20px;
+            padding: 6px 16px;
             border-radius: 50px;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px;
             transition: all 0.3s;
             display: flex;
             align-items: center;
@@ -308,7 +308,7 @@
     <nav id="main-nav">
         <div class="max-w-[1800px] mx-auto px-6 flex items-center justify-between">
             <!-- Logo (Esquerda) -->
-            <a href="#" class="interactive-hover w-32 md:w-40">
+            <a href="#" class="interactive-hover w-28 md:w-36">
                 <img src="assets/img/logo.png" alt="Erick Anderson" class="w-full h-auto">
             </a>
 
@@ -322,7 +322,7 @@
 
             <!-- Direita: Área do Cliente + Idioma -->
             <div class="flex items-center gap-4">
-                <button id="lang-toggle" onclick="toggleLanguage()" class="interactive-hover">
+                <button id="lang-toggle" class="interactive-hover">
                     <span class="text-lg">🇺🇸</span> EN
                 </button>
                 
@@ -356,13 +356,13 @@
             <p id="notif-action" class="text-gray-400 text-xs mt-0.5">acabou de adquirir uma Landing Page</p>
             <p class="text-[10px] text-gray-500 mt-1 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-green-500 inline-block animate-pulse"></span> <span data-i18n="now">Agora mesmo</span></p>
         </div>
-        <button onclick="document.getElementById('notification-toast').classList.remove('show')" class="absolute top-2 right-2 text-gray-500 hover:text-white interactive-hover">
+        <button id="btn-close-toast" class="absolute top-2 right-2 text-gray-500 hover:text-white interactive-hover">
             <i data-lucide="x" class="w-3 h-3"></i>
         </button>
     </div>
 
-    <!-- Top Banner (Removido Lisboa) -->
-    <div class="bg-[#b6f938] text-[#04070d] py-2 px-6 flex items-center justify-center text-center text-xs md:text-sm font-bold relative z-10 interactive-hover mt-[72px]">
+    <!-- Top Banner (Ajustado mt-[56px]) -->
+    <div class="bg-[#b6f938] text-[#04070d] py-2 px-6 flex items-center justify-center text-center text-xs md:text-sm font-bold relative z-10 interactive-hover mt-[56px]">
         <p data-i18n="top_banner">Disponível para novos projetos de design estratégico</p>
     </div>
 
@@ -374,7 +374,6 @@
                     <img src="assets/img/foto-perfil.jpg" alt="Erick Anderson" class="w-12 h-12 rounded-full object-cover border-2 border-[#b6f938]/30">
                     <span data-i18n="hero_badge">Erick Anderson - Designer Estratégico</span>
                 </span>
-                <!-- Título Atualizado (Sem Lisboa) -->
                 <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6 leading-[1.1]" data-i18n="hero_title">
                     Designer Gráfico <span class="font-serif italic font-normal text-gradient heading-gradient inline-block hover:scale-110 transition-transform duration-300 cursor-default">Especialista</span> para negócios que querem vender mais
                 </h1>
@@ -425,7 +424,6 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Cards de Serviço (Mantidos) -->
                 <!-- Card 1 -->
                 <div class="card-border p-8 rounded-2xl reveal group tilt-card interactive-hover">
                     <div class="card-content">
@@ -559,7 +557,7 @@
             <p class="text-gray-400 max-w-2xl mx-auto mb-12 font-manrope" data-i18n="portfolio_desc">Veja alguns trabalhos realizados em identidade visual, redes sociais e materiais digitais.</p>
         </div>
             
-        <div class="w-full h-[1100px] md:h-[800px] overflow-hidden relative group interactive-hover" onclick="openPortfolio()">
+        <div class="w-full h-[1100px] md:h-[800px] overflow-hidden relative group interactive-hover js-open-portfolio">
             <iframe 
                 src="https://www.erickanderson.com.br/portfolio" 
                 class="w-full h-[calc(100%+160px)] border-0 -mt-[160px] pointer-events-none" 
@@ -583,7 +581,7 @@
 
     <!-- Modal/Popup do Portfólio -->
     <div id="portfolioModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 sm:p-6">
-        <div class="absolute inset-0 bg-black/90 backdrop-blur-sm" onclick="closePortfolio()"></div>
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-sm js-close-portfolio"></div>
         
         <div class="relative w-full h-full max-w-7xl bg-[#0c1019] rounded-2xl border border-white/10 shadow-2xl overflow-hidden flex flex-col animate-in fade-in zoom-in duration-300">
             <div class="flex justify-between items-center p-4 border-b border-white/10 bg-[#04070d]">
@@ -593,7 +591,7 @@
                         (<span data-i18n="open_new_tab">Abrir em nova aba</span> <i data-lucide="external-link" class="w-3 h-3"></i>)
                     </a>
                 </div>
-                <button onclick="closePortfolio()" class="text-gray-400 hover:text-white transition-colors p-1 rounded-full hover:bg-white/10 interactive-hover">
+                <button class="text-gray-400 hover:text-white transition-colors p-1 rounded-full hover:bg-white/10 interactive-hover js-close-portfolio">
                     <i data-lucide="x" class="w-6 h-6"></i>
                 </button>
             </div>
@@ -612,7 +610,7 @@
                 <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-[#b6f938]/10 rounded-full blur-[80px] pointer-events-none"></div>
 
                 <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 relative z-10" data-i18n="lp_title">
-                    Quer um site igual a esse?
+                    Quer uma Landing Page igual a esta?
                 </h2>
                 <p class="text-xl text-gray-400 mb-8 font-manrope relative z-10" data-i18n="lp_desc">
                     Eu faço para si! Design estratégico e alta conversão para o seu negócio.
@@ -748,12 +746,10 @@
         </div>
     </footer>
 
-    <!-- PARTICLES.JS -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
         lucide.createIcons();
 
-        // Reveal Animation
         const revealElements = document.querySelectorAll('.reveal');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -762,7 +758,6 @@
         }, { threshold: 0.1 });
         revealElements.forEach(el => observer.observe(el));
 
-        // Modal Logic
         function openPortfolio() {
             const modal = document.getElementById('portfolioModal');
             modal.classList.remove('hidden');
@@ -774,6 +769,14 @@
             modal.classList.add('hidden');
             document.body.style.overflow = ''; 
         }
+
+        // Attach event listeners via JS for reliability
+        document.querySelectorAll('.js-open-portfolio').forEach(el => el.addEventListener('click', openPortfolio));
+        document.querySelectorAll('.js-close-portfolio').forEach(el => el.addEventListener('click', closePortfolio));
+        document.getElementById('btn-close-toast').addEventListener('click', () => {
+            document.getElementById('notification-toast').classList.remove('show');
+        });
+        
         document.addEventListener('keydown', function(event) {
             if (event.key === "Escape") closePortfolio();
         });
@@ -812,26 +815,12 @@
             });
         });
 
-        // PARTICLES.JS CONFIG
+        // Particles
         particlesJS("particles-js", {
-            "particles": {
-                "number": { "value": 40, "density": { "enable": true, "value_area": 800 } },
-                "color": { "value": "#b6f938" },
-                "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" } },
-                "opacity": { "value": 0.3, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
-                "size": { "value": 3, "random": true, "anim": { "enable": false, "speed": 40, "size_min": 0.1, "sync": false } },
-                "line_linked": { "enable": true, "distance": 150, "color": "#b6f938", "opacity": 0.2, "width": 1 },
-                "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
-                "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 0.5 } }, "push": { "particles_nb": 4 } }
-            },
-            "retina_detect": true
+            "particles": { "number": { "value": 40, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#b6f938" }, "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" } }, "opacity": { "value": 0.3, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } }, "size": { "value": 3, "random": true, "anim": { "enable": false, "speed": 40, "size_min": 0.1, "sync": false } }, "line_linked": { "enable": true, "distance": 150, "color": "#b6f938", "opacity": 0.2, "width": 1 }, "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false } }, "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true }, "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 0.5 } }, "push": { "particles_nb": 4 } } }, "retina_detect": true
         });
 
-        // --- TRANSLATION LOGIC (UPDATED PT-BR) ---
+        // Translations & Lang Toggle
         const translations = {
             pt: {
                 top_banner: "Disponível para novos projetos de design estratégico",
@@ -906,36 +895,233 @@
                 btn_client_area: "Área do Cliente"
             },
             en: {
-                // ... (Existing EN translations)
-                top_banner: "Available for new projects in Lisbon and Region",
+                top_banner: "Available for new strategic design projects",
+                hero_badge: "Erick Anderson - Strategic Designer",
+                hero_title: 'Graphic Designer <span class="font-serif italic font-normal text-gradient heading-gradient inline-block hover:scale-110 transition-transform duration-300 cursor-default">Expert</span> for businesses that want to sell more',
+                hero_desc: "Visual identity, websites, social media arts and digital materials focused on credibility, positioning and conversion.",
+                hero_budget_text: "Quick quote and direct service via WhatsApp.",
+                btn_budget: "Request a Quote",
+                btn_contact: "Talk on WhatsApp",
+                prop_1: "Fast and organized delivery",
+                prop_2: "Professional Design",
+                prop_3: "Aligned visual strategy",
+                prop_4: "Arts for conversion",
+                services_title: "How I can help",
+                services_desc: "Complete visual solutions to elevate your brand level.",
+                service_1_title: "Visual Identity",
+                service_1_desc: "Creation or rebranding of logos, definition of colors, typography and visual patterns to strengthen your brand image.",
+                service_2_title: "Websites and Landing Pages",
+                service_2_desc: "Development of institutional websites and landing pages optimized for conversion and speed.",
+                service_3_title: "Social Media Arts",
+                service_3_desc: "Creation of arts for feed, stories and covers, with consistent visual pattern to attract attention and generate trust.",
+                service_4_title: "Digital Materials",
+                service_4_desc: "Development of banners, digital flyers, ads creatives, presentations and other essential materials.",
+                diff_title: 'I work with companies and professionals who need a <span class="text-[#b6f938]">strong image</span> in the market.',
+                list_1: "Rebranding and logo creation",
+                list_2: "Creation of modern Websites and Landing Pages",
+                list_3: "Monthly content packages for social media",
+                list_4: "High-performance creatives for paid traffic",
+                hero_badge_short: "Strategic Designer",
+                diff_subtitle: "Here, design is not just aesthetic.",
+                diff_desc: "Each project is strategically designed for:",
+                val_1_t: "Trust",
+                val_1_d: "Generate immediate trust.",
+                val_2_t: "Positioning",
+                val_2_d: "Position your brand.",
+                portfolio_title: "Selected Portfolio",
+                portfolio_desc: "See some works done in visual identity, social media and digital materials.",
+                btn_portfolio: "View Full Portfolio",
+                open_new_tab: "Open in new tab",
+                lp_title: "Want a Landing Page like this?",
+                lp_desc: "I'll make it for you! Strategic design and high conversion for your business.",
+                btn_lp: "I want a landing page like this",
+                form_title: "Quick Quote",
+                form_subtitle: "Fill in the details below to receive a custom quote.",
+                label_name: "Name",
+                ph_name: "Your name or company",
+                ph_email: "your@email.com",
+                ph_whatsapp: "Your WhatsApp",
+                label_type: "Business Type",
+                ph_type: "Ex: Restaurant, Clinic, Real Estate...",
+                label_service: "Service",
+                opt_select: "Select...",
+                opt_1: "Visual Identity",
+                opt_2: "Institutional Website",
+                opt_3: "Landing Page",
+                opt_4: "Social Media",
+                opt_5: "Digital Materials",
+                opt_6: "Image Pack",
+                opt_7: "Others",
+                label_deadline: "Deadline",
+                ph_deadline: "Ex: Urgent, 1 month...",
+                label_msg: "Message",
+                ph_msg: "Describe your goal, references or links...",
+                btn_send: "Send Quote Request",
+                form_footer_text: "Prefer something faster?",
+                footer_copy: "&copy; 2026 All rights reserved.",
+                now: "Just now",
                 menu_home: "Home",
                 menu_services: "Services",
                 menu_portfolio: "Portfolio",
                 menu_contact: "Contact",
                 btn_client_area: "Client Area"
-                // ... rest of keys would be filled similarly if needed, keeping basic structure for now
             },
             es: {
-               // ... (Existing ES translations)
-               top_banner: "Disponible para nuevos proyectos en Lisboa y Región",
-               menu_home: "Inicio",
-               menu_services: "Servicios",
-               menu_portfolio: "Portafolio",
-               menu_contact: "Contacto",
-               btn_client_area: "Área de Clientes"
+                top_banner: "Disponible para nuevos proyectos de diseño estratégico",
+                hero_badge: "Erick Anderson - Diseñador Estratégico",
+                hero_title: 'Diseñador Gráfico <span class="font-serif italic font-normal text-gradient heading-gradient inline-block hover:scale-110 transition-transform duration-300 cursor-default">Especialista</span> para negocios que quieren vender más',
+                hero_desc: "Identidad visual, sitios web, artes para redes sociales y materiales digitales enfocados en credibilidad, posicionamiento y conversión.",
+                hero_budget_text: "Presupuesto rápido y atención directa vía WhatsApp.",
+                btn_budget: "Pedir presupuesto",
+                btn_contact: "Hablar por WhatsApp",
+                prop_1: "Entrega rápida y organizada",
+                prop_2: "Diseño profesional",
+                prop_3: "Estrategia visual alineada",
+                prop_4: "Artes para conversión",
+                services_title: "Cómo puedo ayudar",
+                services_desc: "Soluciones visuales completas para elevar el nivel de tu marca.",
+                service_1_title: "Identidad Visual",
+                service_1_desc: "Creación o rediseño de logotipos, definición de colores, tipografía y patrones visuales para fortalecer la imagen de tu marca.",
+                service_2_title: "Sitios Web y Landing Pages",
+                service_2_desc: "Desarrollo de sitios institucionales y páginas de aterrizaje (landing pages) optimizadas para conversión y velocidad.",
+                service_3_title: "Artes para Redes Sociales",
+                service_3_desc: "Creación de artes para feed, historias y portadas, con un patrón visual consistente para atraer atención y generar confianza.",
+                service_4_title: "Materiales Digitales",
+                service_4_desc: "Desarrollo de banners, flyers digitales, creativos para anuncios, presentaciones y otros materiales esenciales.",
+                diff_title: 'Trabajo con empresas y profesionales que necesitan una <span class="text-[#b6f938]">imagen fuerte</span> en el mercado.',
+                list_1: "Rebranding y creación de logotipos",
+                list_2: "Creación de Sitios Web y Landing Pages modernas",
+                list_3: "Paquetes mensuales de contenido para redes sociales",
+                list_4: "Creativos de alto rendimiento para tráfico pago",
+                hero_badge_short: "Diseñador Estratégico",
+                diff_subtitle: "Aquí, el diseño no es solo estético.",
+                diff_desc: "Cada proyecto está pensado estratégicamente para:",
+                val_1_t: "Confianza",
+                val_1_d: "Generar confianza inmediata.",
+                val_2_t: "Posicionamento",
+                val_2_d: "Posicionar tu marca.",
+                portfolio_title: "Portafolio Seleccionado",
+                portfolio_desc: "Mira algunos trabajos realizados en identidad visual, redes sociales y materiales digitales.",
+                btn_portfolio: "Ver Portafolio Completo",
+                open_new_tab: "Abrir en nueva pestaña",
+                lp_title: "¿Quieres una Landing Page igual a esta?",
+                lp_desc: "¡Yo la hago para ti! Diseño estratégico y alta conversión para tu negocio.",
+                btn_lp: "Quiero una landing page como esta",
+                form_title: "Presupuesto rápido",
+                form_subtitle: "Rellena los datos abajo para recibir un presupuesto ajustado.",
+                label_name: "Nombre",
+                ph_name: "Tu nombre o el de la empresa",
+                ph_email: "tu@email.com",
+                ph_whatsapp: "Tu WhatsApp",
+                label_type: "Tipo de negocio",
+                ph_type: "Ej: Restaurante, Clínica, Inmobiliaria...",
+                label_service: "Servicio",
+                opt_select: "Seleccione...",
+                opt_1: "Identidad Visual",
+                opt_2: "Sitio Institucional",
+                opt_3: "Landing Page",
+                opt_4: "Redes Sociales",
+                opt_5: "Materiales Digitales",
+                opt_6: "Pack de Imágenes",
+                opt_7: "Otros",
+                label_deadline: "Plazo",
+                ph_deadline: "Ej: Urgente, 1 mes...",
+                label_msg: "Mensaje",
+                ph_msg: "Describe tu objetivo, referencias o enlaces...",
+                btn_send: "Enviar pedido de presupuesto",
+                form_footer_text: "¿Prefieres algo más rápido?",
+                footer_copy: "&copy; 2026 Todos los derechos reservados.",
+                now: "Ahora mismo",
+                menu_home: "Inicio",
+                menu_services: "Servicios",
+                menu_portfolio: "Portafolio",
+                menu_contact: "Contacto",
+                btn_client_area: "Área de Clientes"
             }
         };
 
-        // ... (Notifications Data - same as before)
         const notificationsData = {
             pt: [
                 { name: "Thiago Silva", action: "acabou de adquirir uma Landing Page" },
-                // ...
+                { name: "Marta Ferreira", action: "solicitou um orçamento de Rebranding" },
+                { name: "Café O Pescador", action: "fechou pacote de Redes Sociais" },
+                { name: "Gonçalo Reis", action: "iniciou projeto de Identidade Visual" },
+                { name: "TechSolutions PT", action: "contratou design para app" },
+                { name: "Beatriz Santos", action: "solicitou Landing Page" },
+                { name: "Rui Costa", action: "pediu orçamento para Web Design" },
+                { name: "Clínica Saúde Viva", action: "renovou a Identidade Visual" },
+                { name: "Sofia Mendes", action: "acabou de adquirir uma Landing Page" }
             ],
-            // ...
+            en: [
+                { name: "James Smith", action: "just purchased a Landing Page" },
+                { name: "Sarah Connor", action: "requested a Rebranding quote" },
+                { name: "Fisherman's Cafe", action: "closed a Social Media package" },
+                { name: "George King", action: "started a Visual Identity project" },
+                { name: "TechSolutions UK", action: "hired design for app" },
+                { name: "Betty Saints", action: "requested a Landing Page" },
+                { name: "Roy Coast", action: "asked for Web Design quote" },
+                { name: "Live Health Clinic", action: "renewed Visual Identity" },
+                { name: "Sophie Mendez", action: "just purchased a Landing Page" }
+            ],
+            es: [
+                { name: "Alejandro García", action: "acaba de adquirir una Landing Page" },
+                { name: "Marta Fernández", action: "solicitó un presupuesto de Rebranding" },
+                { name: "Café El Pescador", action: "cerró paquete de Redes Sociales" },
+                { name: "Gonzalo Rey", action: "inició proyecto de Identidad Visual" },
+                { name: "TechSolutions ES", action: "contrató diseño para app" },
+                { name: "Beatriz Santos", action: "solicitó Landing Page" },
+                { name: "Raúl Costa", action: "pidió presupuesto para Diseño Web" },
+                { name: "Clínica Salud Viva", action: "renovó la Identidad Visual" },
+                { name: "Sofía Méndez", action: "acaba de adquirir una Landing Page" }
+            ]
         };
-        // ... (Remaining Logic same as before)
+
+        let currentLang = 'pt';
+        const langs = ['pt', 'en', 'es'];
+        
+        document.getElementById('lang-toggle').addEventListener('click', toggleLanguage);
+
+        function toggleLanguage() {
+            let currentIndex = langs.indexOf(currentLang);
+            currentLang = langs[(currentIndex + 1) % langs.length];
+            
+            const langBtn = document.getElementById('lang-toggle');
+            if(currentLang === 'pt') langBtn.innerHTML = '<span class="text-xl">🇵🇹</span> PT';
+            if(currentLang === 'en') langBtn.innerHTML = '<span class="text-xl">🇺🇸</span> EN';
+            if(currentLang === 'es') langBtn.innerHTML = '<span class="text-xl">🇪🇸</span> ES';
+            
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.innerHTML = translations[currentLang][key];
+                }
+            });
+
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (translations[currentLang][key]) {
+                    el.placeholder = translations[currentLang][key];
+                }
+            });
+        }
+
+        function showNotification() {
+            const toast = document.getElementById('notification-toast');
+            const nameEl = document.getElementById('notif-name');
+            const actionEl = document.getElementById('notif-action');
+            
+            const notifList = notificationsData[currentLang];
+            const randomNotif = notifList[Math.floor(Math.random() * notifList.length)];
+            
+            nameEl.textContent = randomNotif.name;
+            actionEl.textContent = randomNotif.action;
+            
+            toast.classList.add('show');
+            setTimeout(() => { toast.classList.remove('show'); }, 8000);
+            setTimeout(showNotification, 180000);
+        }
+        setTimeout(showNotification, 5000);
+
     </script>
 </body>
 </html>
-
